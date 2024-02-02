@@ -1,8 +1,33 @@
 .overlay-text {
-    position: absolute;
-    left: 20px;
-    bottom: 60px; /* 텍스트를 아래로 내리는 부분 */
-    color: black;
-    font-size: 40px;
-    font-weight: bold;
-  }
+  position: absolute;
+  left: 20px;
+  bottom: 80px; /* 텍스트를 아래로 내리는 부분 */
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.overlay-horizon {
+position: absolute;
+width: 99.9%;
+height: 1px;
+background-color: black;
+bottom: 100px;
+}
+
+.overlay-button-left {
+background-color: transparent;
+position: absolute;
+bottom: 69px;
+right: 40px;
+width: 41px;
+height: 41px;
+}
+.overlay-button-right {
+background-color: transparent;
+position: absolute;
+bottom: 69px;
+right: 0px;
+width: 41px;
+height: 41px;
+}
