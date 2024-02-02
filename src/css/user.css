@@ -1,0 +1,13 @@
+.mypage-container {
+    text-align: center;
+}
+.mypage-container button{
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+}
+.mypage-container img {
+    width: 100px;
+    border-radius: 50%;
+}

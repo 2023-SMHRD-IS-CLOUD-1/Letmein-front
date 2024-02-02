@@ -1,14 +1,15 @@
 import React from 'react'
-import '../css/id.css'
-// 아이디찾기
-const FindId = () => {
 
+const FindPw = () => {
   return (
-    <div >
+    <div>
       <div className='center-input'>
       <p>이름</p>
       <input type='text' placeholder='이름'></input>
-      <p>email</p>
+      <p>아이디</p>
+      <input type='text' placeholder='아이디'></input>
+      <br/>
+      <p>이메일</p>
       <input type='text' placeholder='이메일'></input>
       <br/>
       <button>확인</button>
@@ -17,4 +18,4 @@ const FindId = () => {
   )
 }
 
-export default FindId
+export default FindPw

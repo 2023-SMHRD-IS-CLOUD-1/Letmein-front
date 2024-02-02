@@ -1,0 +1,42 @@
+.id-container{
+    width: auto;
+}
+.center-input{
+    margin-top: 50px;
+}
+
+.center-input input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 400px;
+    border-radius: 5px;
+    border-color: lightgray;
+  }
+
+  .center-input button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 400px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    
+  }
+
+  .center-input p {
+    margin-left: 35px;
+  }
+  .user-container{
+    margin-top: 20px;
+      text-align: center;
+  }
+  .user-container span{
+      margin-right: 15px;
+  }

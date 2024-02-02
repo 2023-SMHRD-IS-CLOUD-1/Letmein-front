@@ -16,11 +16,14 @@ import PostDetail from './components/PostDetail';
 import Mypage from './components/Mypage';
 import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
+import Upload from './components/Upload';
+import FindPw from './components/FindPw';
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <hr/>
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='login' element={<Login/>}/>
@@ -35,7 +38,8 @@ function App() {
         <Route path='myPage' element={<Mypage/>}/>
         <Route path='admin' element={<Admin/>}/>
         <Route path='profileEditor' element={<ProfileEditor/>}/>
-
+        <Route path='upload' element={<Upload/>}/>
+        <Route path='findPw' element={<FindPw/>}/>
       </Routes>
       <Footer/>
     </div>

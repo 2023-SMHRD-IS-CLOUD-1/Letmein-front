@@ -1,17 +1,20 @@
+/*header css*/
 .header-container{
     display: flex;
 }
 .navigation-links{
     margin-top: 16px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 .navigation-links a {
-    color: black; /* 원하는 hover 시의 색상으로 변경 */
+  margin-left: 20px;
+  margin-right: 13px;
+    color: black; 
     text-decoration: none;
   }
 .user-links{
     margin-top: 15px;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 .user-links a{
     color: black;
@@ -21,6 +24,16 @@
 .divider {
     width: 10px;
     height: 15px;
-    margin: 5px; /* 원하는 여백 값으로 변경 */
+    margin: 5px;
+    color: lightslategray; 
   }
+
+  /*footer css*/
+  .footer-container{
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+  }
+
+
   
