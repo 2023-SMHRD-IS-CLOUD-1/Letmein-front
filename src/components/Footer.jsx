@@ -5,7 +5,8 @@ const Footer = () => {
   return (
     <div className='footer-container'>
       <img src={WhiteLogo} style={{width:'100px'}}></img>
-      <span></span>
+      <br />
+      <span style={{color : 'gray', fontSize : '10px'} }>Copyright by ⓒ Letmein ALL rights reserved</span>
     </div>
   )
 }

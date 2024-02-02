@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../images/logo.png'
+import '../fonts/Pretendard-Bold.ttf'
 
 import {Link, useNavigate} from 'react-router-dom'
 import { FaRegUserCircle } from "react-icons/fa";
