@@ -18,6 +18,7 @@ import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
 import Upload from './components/Upload';
 import FindPw from './components/FindPw';
+// 02/02 09:32 test
 
 function App() {
   return (
