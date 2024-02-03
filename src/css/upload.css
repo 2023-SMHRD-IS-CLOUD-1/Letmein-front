@@ -1,0 +1,54 @@
+.previewImg img {
+    width: 350px;
+    border-radius: 8px;
+}
+.previewImg{
+    text-align: center;
+}
+.uploadImg{
+    text-align: center;
+}
+.uploadImg input[type='file'] {
+    display: none; 
+  }
+  
+  .uploadImg label {
+    background-color: black;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .upload-container{
+    margin-bottom: 50px;
+  }
+  .result-container{
+    text-align: center;
+  }
+  .result {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    color: #333;
+  }
+  .result-container button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    width: 80px;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  /* 추가적인 스타일링을 원하실 경우 여기에 추가하세요 */
+  
+  

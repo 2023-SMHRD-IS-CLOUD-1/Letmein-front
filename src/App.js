@@ -18,9 +18,21 @@ import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
 import Upload from './components/Upload';
 import FindPw from './components/FindPw';
+import { useEffect, useState } from 'react';
+import Modal from 'react-modal';
+import { UserContext } from './context/UserContext';
 
 function App() {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [nick, setNick] = useState("");
+  useEffect(()=>{
+    Modal.setAppElement("#root");
+  },[]);
   return (
+    <UserContext.Provider value={{id, setId, pw, setPw, email, setEmail, name, setName, nick, setNick}}>
     <div className="App">
       <Header/>
       <hr/>
@@ -43,6 +55,7 @@ function App() {
       </Routes>
       <Footer/>
     </div>
+    </UserContext.Provider>
   );
 }
 

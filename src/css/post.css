@@ -1,0 +1,23 @@
+.post-container {
+    padding: 5px;
+}
+
+.input-container p {
+    margin-bottom: 8px; 
+  }
+.input-container input{
+    width: 450px;
+    margin-bottom: 10px;
+}
+.input-container button{
+    width: 90px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 190px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+}
+
