@@ -11,3 +11,38 @@
     width: 100px;
     border-radius: 50%;
 }
+.mypage-container table {
+    border-spacing: 0 20px;
+}
+.mypage-container table td {
+    padding-left: 20px;
+}
+.mypage-container .search-container {
+    height: 25px;
+    width: 300px;
+}
+.mypage-container .title {
+    padding-bottom: 30px;
+}
+.mypage-container .contact-container {
+    text-align: left;
+}
+.mypage-container .write-btn {
+    float: right;
+}
+
+.mypage-container label {
+    display: block; /* 줄 바꿈 */
+    margin: 10px 0; /* 위아래 여백 추가 */
+  }
+  
+  .mypage-container input[name='title'],
+  .mypage-container textarea[name='content'] {
+    width: 100%; /* 너비를 최대로 설정 */
+  }
+  .mypage-container .left {
+    text-align: left;
+  }
+  .mypage-container .admin {
+    text-align: right;
+  }

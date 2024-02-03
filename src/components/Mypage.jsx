@@ -11,8 +11,8 @@ const Mypage = () => {
       <img src={userImg}></img>
       <h2>닉네임</h2>
       <h4>@userid</h4>
-      <button onClick={()=>nav("/profileEditor")}>프로필 수정</button>
-      <button>고객 문의</button>
+      <button onClick={() => nav("/profileEditor")}>프로필 수정</button>
+      <button onClick={() => nav("/contactCustomer")}>고객 문의</button>
       <div className='img-container'>
 
       </div>
