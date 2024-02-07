@@ -1,42 +1,96 @@
 .id-container{
-    width: auto;
+  width: auto;
 }
 .center-input{
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
-.center-input input {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    padding: 15px;
-    box-sizing: border-box;
-    width: 400px;
-    border-radius: 5px;
-    border-color: lightgray;
-  }
+.center-input input{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 400px;
+  border-radius: 5px;
+  border-color: lightgray;
+}
 
-  .center-input button {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    padding: 20px;
-    box-sizing: border-box;
-    width: 400px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    
-  }
+.id-container button {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 400px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  
+}
 
-  .center-input p {
-    margin-left: 35px;
-  }
-  .user-container{
-    margin-top: 20px;
-      text-align: center;
-  }
-  .user-container span{
-      margin-right: 15px;
-  }
+.center-input p {
+  margin-left: 35px;
+}
+.user-container{
+  margin-top: 20px;
+    text-align: center;
+}
+.user-container span{
+    margin-right: 15px;
+}
+
+/* 비밀번호 입력 필드에 대한 스타일 */
+input[type='password' i] {
+-webkit-text-security: disc !important;
+padding-block: 1px;
+padding-inline: 2px;
+padding-right: 30px; 
+  border: none;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+  padding: 12px;
+  width: 330px;
+}
+input[type='email' i] {
+padding-block: 1px;
+padding-inline: 2px;
+padding-right: 30px; 
+  border: none;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+  padding: 12px;
+  width: 330px;
+}
+/* 다른 모든 입력 필드에 대한 일반 스타일 */
+
+.check{
+background-color: black;
+color: white;
+padding: 5px;
+border-radius: 5px;
+width: 105px;
+text-align: center;
+margin-right: 30px;
+font-size: 13px;
+}
+
+.center-input span {
+margin-left: 50px;
+color: red;
+}
+
+.user-container{
+margin-bottom: 20px;
+}
+
+input[type='text'] {
+padding-right: 30px; 
+border: none;
+background-color: rgb(236, 236, 236);
+border-radius: 5px;
+padding: 12px;
+width: 330px;
+}

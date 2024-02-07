@@ -23,16 +23,17 @@ import Modal from 'react-modal';
 import { UserContext } from './context/UserContext';
 
 function App() {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [nick, setNick] = useState("");
+  const [user_id, setId] = useState("");
+  const [user_pw, setPw] = useState("");
+  const [user_email, setEmail] = useState("");
+  const [user_name, setName] = useState("");
+  const [user_nick, setNick] = useState("");
+  const [login, setLogin] = useState(false);
   useEffect(()=>{
     Modal.setAppElement("#root");
   },[]);
   return (
-    <UserContext.Provider value={{id, setId, pw, setPw, email, setEmail, name, setName, nick, setNick}}>
+    <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin}}>
     <div className="App">
       <Header/>
       <hr/>
