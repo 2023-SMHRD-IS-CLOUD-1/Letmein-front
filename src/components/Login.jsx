@@ -35,9 +35,9 @@ const Login = () => {
     <div className='id-container'>
       <div className='center-input'> 
       <p>아이디</p>
-      <input type='text' placeholder='아이디' onChange={(e)=>setId(e.target.value)} required></input><br/>
+      <input type='text' className='id-input' placeholder='아이디' onChange={(e)=>setId(e.target.value)} required></input><br/>
       <p>비밀번호</p>
-      <input type='password' placeholder='비밀번호' onChange={(e)=>setPw(e.target.value)} required></input>
+      <input type='password' className='pw-input' placeholder='비밀번호' onChange={(e)=>setPw(e.target.value)} required></input>
      
       {errorMessage && <span>{errorMessage}</span>}
       <button onClick={LoginHandler}>로그인</button>

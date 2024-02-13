@@ -86,11 +86,3 @@ color: red;
 margin-bottom: 20px;
 }
 
-input[type='text'] {
-padding-right: 30px; 
-border: none;
-background-color: rgb(236, 236, 236);
-border-radius: 5px;
-padding: 12px;
-width: 330px;
-}

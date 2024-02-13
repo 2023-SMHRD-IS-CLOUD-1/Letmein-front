@@ -28,12 +28,14 @@ function App() {
   const [user_email, setEmail] = useState("");
   const [user_name, setName] = useState("");
   const [user_nick, setNick] = useState("");
+  const [searchKey , setSearchKey] = useState("");
   const [login, setLogin] = useState(false);
   useEffect(()=>{
     Modal.setAppElement("#root");
   },[]);
   return (
-    <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin}}>
+    <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
+      ,searchKey , setSearchKey}}>
     <div className="App">
       <Header/>
       <hr/>
