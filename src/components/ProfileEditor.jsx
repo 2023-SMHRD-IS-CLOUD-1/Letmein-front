@@ -1,68 +1,51 @@
-import React from 'react'
-import { useState } from 'react'
-import '../css/user.css'
-
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import axios from 'axios'
+import { UserContext } from '../context/UserContext';
+import emailjs from 'emailjs-com';
+import { useNavigate } from 'react-router-dom';
 const ProfileEditor = () => {
-  const [userImg, setuserImg] = useState('기본 이미지 주소');
+  const nav = useNavigate();
+  const { user_id, user_pw, setPw, user_name, setName, user_email, setEmail, user_nick, setNick } = useContext(UserContext);
+  const [chkPw, setChkPw] = useState("");
 
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    //  file : 선택한 이미지 파일
-    const reader = new FileReader();
-    // 선택한 이미지 파일을 브라우저에 띄우기 위해 FileReader 객체 사용
-    //  FileReader : 웹 애플리케이션에서 비동기적으로 데이터를 읽어들이는 것을 가능하게 하는 객체 
-
-    reader.onloadend = () => {
-      setuserImg(reader.result);
-    };
-
-    reader.readAsDataURL(file);
+  const edliter = () => {
+    axios.post("http://localhost:8090/letmein/profileEditor", {
+      user_id: user_id,
+      user_pw: user_pw,
+      user_name: user_name,
+      user_nick: user_nick,
+      user_email: user_email
+    })
+      .then((res) => {
+        console.log(res.data);
+        alert("개인정보 수정 성공")
+        nav("/myPage")
+      })
+      .catch((error) => {
+        console.error('개인정보 수정 실패', error);
+      });
   }
-
   return (
-    <div className='mypage-container'>
-
-      <fieldset align="center">
-        <h2>프로필 수정</h2>
-
-        <img src={userImg} alt="프로필 사진" />
-        <br />
-        <input type="file" onChange={handleImageUpload} />
-        <br />
-        <br />
-        <hr />
-        <table align='center'>
-          <tbody>
-            <tr>
-              <th>ID</th>
-              <td><input type="text" placeholder='아이디 입력' /></td>
-            </tr>
-            <tr>
-              <th>PW</th>
-              <td><input type="password" placeholder='비밀번호 입력' /></td>
-            </tr>
-            <tr>
-              <th>PW CHECK</th>
-              <td><input type="password" placeholder='비밀번호 재입력' /></td>
-            </tr>
-            <tr>
-              <th>NICKNAME</th>
-              <td><input type="text" placeholder='닉네임 입력' /></td>
-            </tr>
-            <tr>
-              <th>EMAIL</th>
-              <td><input type="text" placeholder='이메일 입력' /></td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <button >수정</button>
-        <button>회원탈퇴</button>
-      </fieldset>
-
+    <div className='id-container'>
+      <div className='center-input'>
+        <p>아이디</p>
+        <input type='text' placeholder={user_id} name='user_id' disabled></input>
+        <p>비밀번호</p>
+        <input type='password' placeholder='비밀번호' required onChange={(e) => setPw(e.target.value)}></input>
+        <p>비밀번호 확인</p>
+        <input className='pw' type='password' placeholder='비밀번호 확인' required onChange={(e) => setChkPw(e.target.value)}></input>
+        {user_pw != chkPw && chkPw != "" ? <span>비밀번호를 다시 입력해주세요</span> : ""}
+        <p>이름</p>
+        <input className='pw' name='user_name' type='text' placeholder='이름' required onChange={(e) => setName(e.target.value)}></input>
+        <p>닉네임</p>
+        <input type='text' placeholder='닉네임' required onChange={(e) => setNick(e.target.value)}></input>
+        <p>이메일</p>
+        <input type='email' name='user_email' placeholder='이메일' required onChange={(e) => setEmail(e.target.value)}></input>
+      </div>
+      <button type='submit' onClick={edliter}> 수정 완료 </button>
     </div>
   )
 }
 
 export default ProfileEditor
+

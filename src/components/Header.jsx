@@ -13,7 +13,7 @@ const Header = () => {
   }
     return (
       <div className='header-container'>
-        <img src={logo} alt="Logo" style={{ width: '130px', cursor: 'pointer'}} onClick={()=>nav("/")}/>
+        <img src={logo} alt="Logo" style= {{ width: '130px', cursor: 'pointer'}} onClick={()=>nav("/")}/>
         <div className="navigation-links">
           <Link to="/upload" >체형 분석</Link>
           <Link to="/community">커뮤니티</Link>
@@ -24,7 +24,9 @@ const Header = () => {
           : <Link to="/login" style={{fontSize:'15px'}}>LOGIN</Link>}
           
           <span className='divider'>|</span>
-          <FaRegUserCircle size="20" style={{ verticalAlign: 'text-bottom' }} onClick={()=>nav("/myPage")}/>
+          {login == true ? <FaRegUserCircle size="20" style={{ verticalAlign: 'text-bottom' }} onClick={()=>nav("/myPage")}/> 
+          : <FaRegUserCircle size="20" style={{ verticalAlign: 'text-bottom' }} onClick={()=>alert("로그인 해주세요")}/>}
+          
         </div>
         
       </div>

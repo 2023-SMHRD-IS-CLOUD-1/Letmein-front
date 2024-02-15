@@ -21,6 +21,8 @@ import FindPw from './components/FindPw';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { UserContext } from './context/UserContext';
+import CommunityDetail from './components/CommunityDetail';
+import ComUpdate from './components/ComUpdate';
 
 function App() {
   const [user_id, setId] = useState("");
@@ -35,7 +37,7 @@ function App() {
   },[]);
   return (
     <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
-      ,searchKey , setSearchKey}}>
+     ,searchKey , setSearchKey}}>
     <div className="App">
       <Header/>
       <hr/>
@@ -53,8 +55,11 @@ function App() {
         <Route path='myPage' element={<Mypage/>}/>
         <Route path='admin' element={<Admin/>}/>
         <Route path='profileEditor' element={<ProfileEditor/>}/>
+        <Route path='ContactCustomer' element={<ContactCustomer/>}/>
         <Route path='upload' element={<Upload/>}/>
         <Route path='findPw' element={<FindPw/>}/>
+        <Route path='/CommunityDetail/:postId' element={<CommunityDetail />} />
+        <Route path='/ComUpdate/:num' element={<ComUpdate/>} />
       </Routes>
       <Footer/>
     </div>
