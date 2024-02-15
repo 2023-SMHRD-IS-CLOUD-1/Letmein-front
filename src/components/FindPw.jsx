@@ -2,8 +2,8 @@ import React from 'react'
 
 const FindPw = () => {
   return (
-    <div>
-      <div className='center-input'>
+    <div className='center-input' >
+      <div className='id-container'>
       <p>이름</p>
       <input type='text' placeholder='이름'></input>
       <p>아이디</p>

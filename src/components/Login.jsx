@@ -53,7 +53,7 @@ const Login = () => {
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="비밀번호를 입력해주세요" variant="standard" 
         onChange={(e) => setPw(e.target.value)} error={!user_pw} autoFocus={!user_pw} 
-        required helperText={!user_pw ? '비밀번호를 입력해주세요' : ''} type='password'/>
+        required helperText={!user_pw ? '비밀번호를 입력해주세요' : ''}/>
       </Box>
       </div>
       {errorMessage && <p>{errorMessage}</p>}
