@@ -7,7 +7,7 @@
     padding: 10px;
     margin-left: 10px;
 }
-.mypage-container img {
+.mypage-container .userImg {
     width: 100px;
     border-radius: 50%;
 }

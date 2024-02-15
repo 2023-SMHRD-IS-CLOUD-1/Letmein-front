@@ -9,7 +9,6 @@ const MasonryItem = ({ item }) => {
     nav(`/CommunityDetail/${post_num}`,{state:{item}})
   }
   useEffect(() => {
-    console.log("마이페이지",item)
     const img = imgRef.current;
     if (img) {
       img.onload = () => {
@@ -32,7 +31,7 @@ const MasonryItem = ({ item }) => {
       ) : (
         ""
       )}
-      {item.post_imgsrc != null ? (
+       {item.post_imgsrc != null ? (
         <img
           ref={imgRef}
           src={item.post_imgsrc}

@@ -99,10 +99,10 @@ useEffect(()=>{
         </div>
       )) : ""}
       </Masonry>
-      <button ref={ref} onClick={goToTop}>
+      <div ref={ref}>끝</div>
+      <button onClick={goToTop}>
       <IoTriangle style={{color:"white"}}/>
       </button>
-      <div ref={ref}></div>
     </div>
   );
 }
