@@ -56,7 +56,6 @@ function App() {
         <Route path='myPage' element={<Mypage/>}/>
         <Route path='admin' element={<Admin/>}/>
         <Route path='profileEditor' element={<ProfileEditor/>}/>
-        <Route path='ContactCustomer' element={<ContactCustomer/>}/>
         <Route path='upload' element={<Upload/>}/>
         <Route path='findPw' element={<FindPw/>}/>
         <Route path='/CommunityDetail/:postId' element={<CommunityDetail />} />

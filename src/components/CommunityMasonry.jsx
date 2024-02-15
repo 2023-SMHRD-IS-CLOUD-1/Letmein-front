@@ -70,8 +70,8 @@ useEffect(()=>{
     const ImgFethch = () => {
       axios(`http://localhost:8090/letmein/selectAll?page=${page}&size=6`)
       .then((res) => {
-        const filteredData = res.data.filter(item => item.post_imgsrc !== null);
-        setPostList([...postList, ...filteredData]);
+        console.log(res.data)
+        setPostList([...postList, ...res.data]);
         setPage((page)=>page+1)
       }).catch((error) => {
         console.error(error);

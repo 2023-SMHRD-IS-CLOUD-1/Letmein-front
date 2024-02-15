@@ -55,7 +55,7 @@ const CommunityDetail = () => {
     }, [item]);
     useEffect(()=>{
         axios.post("http://localhost:8090/letmein/countLike",{
-            post_like_num : num
+            post_num : num
         }).then((res)=>{
             setCntLike(res.data);
         }).catch((error)=>{
@@ -65,10 +65,8 @@ const CommunityDetail = () => {
         axios.post("http://localhost:8090/letmein/countUser",{
             user_id : user_id
         }).then((res)=>{
-            console.log("결과",res.data)
             if(res.data.includes(num)){
                 setIdIS(true)
-                console.log("id",Idis)
             }
         }).catch((error)=>{
             console.error(error)
@@ -82,7 +80,7 @@ const CommunityDetail = () => {
             nav("/login");
         }else if(!like){
             axios.post("http://localhost:8090/letmein/like",{
-                post_like_num : num,
+                post_num : num,
                 user_id : user_id
             }).then((res)=>{
                 setLike(true);
@@ -98,7 +96,7 @@ const CommunityDetail = () => {
             nav("/login");
         }else{
             axios.post("http://localhost:8090/letmein/unlike",{
-                post_like_num : num,
+                post_num : num,
                 user_id : user_id
             }).then((res)=>{
                 setLike(false);
