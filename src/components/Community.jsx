@@ -56,8 +56,8 @@ const Community = () => {
         </div>
         <hr/>
         <div className='board-container'>
-          <span>최신순</span>
-          <span>좋아요순</span>
+          <span>🤍</span>
+          <span>인기순</span>
           <button onClick={() => nav("/post")}>➕</button>
         </div>
         <CommunityMasonry searchKey={searchKey} search={search}/>

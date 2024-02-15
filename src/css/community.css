@@ -26,7 +26,7 @@ element.style {
 }
 
 .board-container button{
-  margin-left: 270px;
+  margin-left: 320px;
   border: none;
   background-color: black;
   padding: 10px;
@@ -56,4 +56,56 @@ element.style {
 
 .masonry-content{
   border-radius: 10px;
+}
+
+.masonry button{
+  background-color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 430px;
+  margin-bottom: 20px;
+}
+
+
+.detail-container img{
+  width: 400px;
+}
+.detail-container {
+  position: relative;
+}
+
+.icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* 이미지보다 위에 렌더링됨 */
+}
+
+.image-container {
+  position: relative; /* 이미지는 아이콘 위에 렌더링되므로 위치를 상대적으로 설정 */
+}
+
+.detail-container img {
+  width: 100%;
+  height: auto;
+}
+
+.userIdcont{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.update-container{
+  text-align: center;
+  margin-bottom: 40px;
+}
+.update-container button{
+  padding: 15px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 5px;
 }

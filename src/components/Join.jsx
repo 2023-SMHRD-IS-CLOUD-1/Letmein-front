@@ -4,7 +4,10 @@ import { UserContext } from '../context/UserContext';
 import emailjs from 'emailjs-com';
 import { generateMessage, sendEmail, joinHandler, chkHandler } from '../authUtils';
 import { useNavigate } from 'react-router-dom';
-
+import { Box, FormControl, Input, InputLabel, InputAdornment, TextField } from '@mui/material';
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import MailRoundedIcon from '@mui/icons-material/MailRounded';
 const Join = () => {
   const nav = useNavigate();
   const {user_id,setId,user_pw,setPw, user_name, setName, user_email, setEmail,user_nick,setNick} = useContext(UserContext);
@@ -13,7 +16,8 @@ const Join = () => {
   const [msg , setMsg] = useState("");
   const [chk, setChk] = useState("");
   const [join, setJoin] = useState("");
-  const [idChk, setIdChk] = useState("");
+  const [idChk, setIdChk] = useState(false);
+  const [error, setError] = useState(false);
   const idInputRef = useRef(null);
   // 이메일 전송
   const handleGenerateMessage = () => {
@@ -52,11 +56,11 @@ const Join = () => {
     console.log(chk)
     if(msg == chk){
       setJoin(<>
-         <span>인증 성공!</span>
+          <p className='message'>인증이 완료되었습니다</p>
           <button type='submit' onClick={handleJoin}>회원가입</button>
       </>)
     }else{
-      setJoin( <span>인증번호를 다시 확인해주세요</span>)
+      setJoin( <p className='message' style={{color:'red'}}>인증번호를 다시 확인해주세요</p>)
     }
   }
   // 아이디 중복 체크
@@ -65,9 +69,9 @@ const Join = () => {
       user_id:user_id
     }).then((res)=>{
       if(res.data == 0){
-        setIdChk(<p >중복되는 아이디가 없습니다!</p>)
+        setIdChk(false)
       }else{
-        setIdChk(<span >중복되는 아이디가 존재합니다! 다시 입력해주세요!</span>)
+        setIdChk(true)
         idInputRef.current.focus();
       }
     })
@@ -76,31 +80,53 @@ const Join = () => {
     })
   }
 
-  
 
   return (
-    <div className='id-container'>
+    <div className='join-container'>
       <div className='center-input'> 
-      <p>아이디</p>
-      <input type='text' placeholder='아이디' name='user_id' required onChange={(e)=>setId(e.target.value)}  ref={idInputRef}></input>
-      <p className='check' onClick={idChek}>아이디 중복 체크</p>
-      {idChk}
-      <p>비밀번호</p>
-      <input type='password' placeholder='비밀번호' required onChange={(e)=>setPw(e.target.value)}></input>
-      <p>비밀번호 확인</p>
-      <input className='pw' type='password' placeholder='비밀번호 확인' required onChange={(e)=>setChkPw(e.target.value)}></input>
-      {user_pw!=chkPw && chkPw!= ""?<span>비밀번호를 다시 입력해주세요</span>:""}
-      <p>이름</p>
-      <input className='pw' name='user_name' type='text' placeholder='이름' required onChange={(e)=>setName(e.target.value)}></input>
-      <p>닉네임</p>
-      <input type='text' placeholder='닉네임' required onChange={(e)=>setNick(e.target.value)}></input>
-      <p>이메일</p>
-      <input type='email' name='user_email' placeholder='이메일'  required onChange={(e)=>setEmail(e.target.value)}></input>
-      <p className='check' onClick={handleGenerateMessage}>이메일 인증</p>
-      <br/>
-      {isEmailSent==true ?  <input type='text' placeholder='인증번호를 입력해주세요' onChange={(e)=>setChk(e.target.value)}></input>:null}
+      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+      <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-id" label="아이디" variant="standard" 
+        onChange={(e)=>setId(e.target.value)} helperText={ [idChk ? "중복된 아이디 입니다": "", !user_id?"아이디를 입력해주세요":""]} 
+        required ref={idInputRef} error={!user_id} />
+    </Box>
+    <p className='check' onClick={idChek}>아이디 중복 체크</p>
+    <Box sx={{ display: 'flex', alignItems: 'flex-end' , marginTop:'30px'}}>
+      <LockRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-pw" label="비밀번호" variant="standard" 
+        onChange={(e)=>setPw(e.target.value)} required error={!user_pw} type='password'
+        helperText={!user_pw ? "비밀번호를 입력해주세요":""}/>
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop:'30px'}}>
+      <LockRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-chk-pw" label="비밀번호 확인" variant="standard" 
+        type='password' onChange={(e)=>setChkPw(e.target.value)}
+        helperText={user_pw!==chkPw && chkPw!== ""?"비밀번호를 다시 확인해주세요":""}
+        required error={!chkPw}  />
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop:'30px'}}>
+      <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-name" label="이름" variant="standard"  onChange={(e)=>setName(e.target.value)}
+        required error={!user_name} helperText={!user_name ? "이름을 입력해주세요":""} />
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop:'30px'}}>
+      <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-nick" label="닉네임" variant="standard"  onChange={(e)=>setNick(e.target.value)}
+        required error={!user_nick} helperText={!user_nick ? "닉네임을 입력해주세요":""} />
+    </Box>
+    <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop:'30px'}}>
+      <MailRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField type='email' id="input-with-sx-email" label="이메일" variant="standard"  onChange={(e)=>setEmail(e.target.value)}
+        required error={!user_email} helperText={!user_email ? "이메일을 입력해주세요":""}  />
+    </Box>      
+    <p className='check' onClick={handleGenerateMessage}>이메일 인증</p>
+    {isEmailSent===true ?  <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop:'20px'}}>
+      <MailRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+      <TextField id="input-with-sx-chk-email" label="인증번호를 입력해주세요" variant="standard"  onChange={(e)=>setChk(e.target.value)}
+        required error={!chk}  />
+    </Box>:null}
+
       {msg!= "" ? <p className='check' onClick={msgCheck}>인증번호 확인 </p>:null} 
-      
       {chk != "" ? join : ""}
       </div>
     </div>

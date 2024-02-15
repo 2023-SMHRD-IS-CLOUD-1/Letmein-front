@@ -3,6 +3,9 @@
 }
 .center-input{
   margin-top: 50px;
+  align-items: center;
+  text-align: center;
+  margin-left: 20px;
 }
 
 .center-input input{
@@ -28,11 +31,12 @@
   border: none;
   border-radius: 5px;
   margin-top: 10px;
-  
 }
-
+.id-container p {
+  margin-right: 70px;
+}
 .center-input p {
-  margin-left: 35px;
+  margin-right: 80px;
 }
 .user-container{
   margin-top: 20px;
@@ -41,30 +45,12 @@
 .user-container span{
     margin-right: 15px;
 }
-
+.id-container p {
+  margin-left: 50px;
+  color: red;
+  }
 /* 비밀번호 입력 필드에 대한 스타일 */
-input[type='password' i] {
--webkit-text-security: disc !important;
-padding-block: 1px;
-padding-inline: 2px;
-padding-right: 30px; 
-  border: none;
-  background-color: rgb(236, 236, 236);
-  border-radius: 5px;
-  padding: 12px;
-  width: 330px;
-}
-input[type='email' i] {
-padding-block: 1px;
-padding-inline: 2px;
-padding-right: 30px; 
-  border: none;
-  background-color: rgb(236, 236, 236);
-  border-radius: 5px;
-  padding: 12px;
-  width: 330px;
-}
-/* 다른 모든 입력 필드에 대한 일반 스타일 */
+
 
 .check{
 background-color: black;
@@ -86,3 +72,15 @@ color: red;
 margin-bottom: 20px;
 }
 
+.join-container button{
+  background-color: black;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 20px;
+  width: 400px;
+  margin-bottom: 30px;
+}
+.message{
+  margin-left: 70px;
+}

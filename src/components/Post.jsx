@@ -5,7 +5,10 @@ import { UserContext } from '../context/UserContext'
 import axios from 'axios'
 import AWS from 'aws-sdk'
 import { useNavigate } from 'react-router-dom'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 const Post = () => {
+  const nav = useNavigate();
   const { user_id } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -32,7 +35,7 @@ const Post = () => {
       alert('파일을 선택해주세요');
       return;
     }
-
+    
     AWS.config.update({
       accessKeyId: 'AKIA2UC3EBSVRKE3FREQ',
       secretAccessKey: '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',
@@ -63,6 +66,7 @@ const Post = () => {
           post_imgsrc: `https://d1nypumamskciu.cloudfront.net/${imgRef.current.files[0].name}`
         }).then((res) => {
           console.log(res);
+          nav("/community")
         }).catch((error) => {
           console.error(error);
         });
@@ -72,6 +76,7 @@ const Post = () => {
 
   return (
     <div className='post-container'>
+      <h2>게시글 등록</h2>
       <div className='previewImg'>
         <img src={imgFile || Img} alt="코디 이미지를 업로드 해주세요" />
       </div>
@@ -80,18 +85,29 @@ const Post = () => {
         <input type='file' accept='image/*' id='profileImg' onChange={saveImgFile} ref={imgRef} />
       </div>
       <div className='input-container'>
-        <p>제목 </p>
-        <input type='text' placeholder='제목을 입력하세요' required onChange={(e) => setTitle(e.target.value)}></input>
-        <p> 정보 </p>
-        <input type='text' placeholder='체형, 몸무게 등의 정보를 남겨주세요' required onChange={(e) => setContent(e.target.value)}></input>
-        <p>상의</p>
-        <input type='text' placeholder='상의 정보를 입력해주세요' onChange={(e) => setTop(e.target.value)} required></input>
-        <p>하의</p>
-        <input type='text' placeholder='하의 정보를 입력해주세요' onChange={(e) => setPants(e.target.value)} required></input>
-        <p>악세서리</p>
-        <input type='text' placeholder='악세서리 정보를 입력해주세요' onChange={(e) => setAcc(e.target.value)} required></input>
-        <p>신발</p>
-        <input type='text' placeholder='신발 정보를 입력해주세요' onChange={(e) => setShoe(e.target.value)} required></input>
+        
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: 'auto' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          < TextField id="standard-basic" label="제목" variant="standard" onChange={(e)=>setTitle(e.target.value)}
+          required autoFocus={!title} error={!title} helperText={!title ? "제목을 필수로 입력해주세요" : "제목을 입력해주세요"}/>
+          < TextField id="standard-basic" label="정보" variant="standard" onChange={(e)=>setContent(e.target.value)}
+          required autoFocus={!content} error={!content} 
+          helperText={!content ? "체형, 몸무게 등의 정보를 입력해주세요" : "체형, 몸무게 등의 정보를 입력해주세요"}/>
+          < TextField id="standard-basic" label="상의" variant="standard" onChange={(e)=>setTop(e.target.value)}
+          helperText={"상의 정보를 입력해주세요"}/>
+          < TextField id="standard-basic" label="하의" variant="standard" onChange={(e)=>setPants(e.target.value)}
+          helperText={"하의 정보를 입력해주세요"}/>
+          < TextField id="standard-basic" label="액세서리" variant="standard" onChange={(e)=>setAcc(e.target.value)}
+          helperText={"액세서리 정보를 입력해주세요"}/>
+          < TextField id="standard-basic" label="신발" variant="standard" onChange={(e)=>setShoe(e.target.value)}
+          helperText={"신발 정보를 입력해주세요"}/>
+        </Box>
         <button onClick={handleSubmit} type='submit'>등록</button>
       </div>
     </div>
