@@ -16,10 +16,10 @@ const MasonryItem = ({ item }) => {
 
   return (
     <div className='masonry-item' >
-      {item.post_imgsrc != null ? (
+      {item.postImgsrc != null ? (
         <img
           ref={imgRef}
-          src={item.post_imgsrc}
+          src={item.postImgsrc}
           className='masonry-content'
           alt={`Post ${item.post_num}`}
           style={{ width: '220px' }}
