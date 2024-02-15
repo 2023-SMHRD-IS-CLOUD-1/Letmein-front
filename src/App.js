@@ -16,6 +16,7 @@ import PostDetail from './components/PostDetail';
 import Mypage from './components/Mypage';
 import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
+import ContactCustomer from './components/ContactCustomer';
 import Upload from './components/Upload';
 import FindPw from './components/FindPw';
 import { useEffect, useState } from 'react';

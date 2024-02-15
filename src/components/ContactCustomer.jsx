@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const ContactCustomer = () => {
     const nav = useNavigate();
-
+    
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
