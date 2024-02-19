@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
@@ -19,9 +20,8 @@ import { MdDelete } from "react-icons/md";
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import axios from 'axios';
-import '../fonts/Pretendard-Bold.ttf'
-const CommunityDetail = () => {
-    const {user_id} =useContext(UserContext);
+const Detail = () => {
+    const {user_id, sortClk, setSortClk} =useContext(UserContext);
     const location = useLocation();
     const item = location.state.item;
     const nav = useNavigate();
@@ -36,18 +36,18 @@ const CommunityDetail = () => {
     const [Idis, setIdIS] = useState(false);
     useEffect(() => {
         if(item.postTop != null){
-            setTop(item.postTop)
+            setTop(item.post_top)
         }if(item.postPants != null){
-            setPant(item.postPants)
+            setPant(item.post_pants)
         }if(item.postShoe != null){
-            setShoe(item.postShoe)
+            setShoe(item.post_shoe)
         }if(item.postAcc !=null){
-            setAcc(item.postAcc)
+            setAcc(item.post_acc)
         }
-        setNum(item.postNum)
+        setNum(item.post_num)
         // 글 작성자의 닉네임 조회
         axios.post("http://localhost:8090/letmein/nickFind",{
-            user_id : item.userId
+            user_id : item.user_id
         }).then((res)=>{
             setNick(res.data[0].user_nick);
         }).catch((error)=>{
@@ -127,21 +127,20 @@ const CommunityDetail = () => {
             console.error(error)
         })
     }
-
   return (
     <div className='detail-container'>
        <div className='icon-container'>
             <ArrowBackIosRoundedIcon style={{color:'black', fontSize:'40px'}} onClick={handleIconClick}/>
         </div>
         <div className='image-container'>
-            <img src={item.postImgsrc} alt="post-img" />
+            <img src={item.post_imgsrc} alt="post-img" />
         </div>
         <div className='userIdcont'>
         <AccountCircleRoundedIcon style={{fontSize:'40px'}}/>
         <span style={{fontSize:'25px', marginTop:'-10px'}}>{nick}</span>
         <span>| </span>
-        <span>@{item.userId}</span>
-        {item.userId === user_id ? <> <MdEdit style={{fontSize:'30px'}} onClick={updateHandler}/>
+        <span>@{item.user_id}</span>
+        {item.user_id === user_id ? <> <MdEdit style={{fontSize:'30px'}} onClick={updateHandler}/>
         <MdDelete style={{fontSize:'30px'}} onClick={deleteHandler}/></> : ""}
        
         {like || Idis ?  <FcLike style={{fontSize:'30px'}} onClick={unLike}/>: <FcLikePlaceholder style={{fontSize:'30px'}} onClick={likeHandler}/>}
@@ -189,7 +188,7 @@ const CommunityDetail = () => {
             }
     </List>
     </div>
-  );
+  )
 }
 
-export default CommunityDetail
+export default Detail

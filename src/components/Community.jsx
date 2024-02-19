@@ -12,41 +12,53 @@ import CommunityMasonry from './CommunityMasonry';
 import React from 'react';
 import axios from 'axios';
 import { UserContext } from '../context/UserContext';
+import { IoCloseSharp } from "react-icons/io5";
+import NativeSelect from '@mui/material/NativeSelect';
+import ComSort from './ComSort';
+import ComSortMansory from './ComSortMansory';
+
+
 const Community = () => {
-  const nav = useNavigate();
-  const [searchKey , setSearchKey] = useState(""); 
+    const nav = useNavigate();
+    const [searchKey , setSearchKey] = useState(""); 
     const [search, setSearch] = useState('writer'); 
     const searchRef = useRef(null);
-    const {user_id} = useContext(UserContext);
-    const [mylike, setMyLike] = useState([]);
+    const {del, setDel, sortClk, setSortClk , sort, setSort} = useContext(UserContext);
+    console.log("sortClk",sortClk);
+    console.log("sort", sort)
     const handleChange = (event) => {
       setSearch(event.target.value);
     };
   
     const searchHandler = () =>{
-        console.log("handler",searchRef.current.value)
         setSearchKey(searchRef.current.value);
+        setDel(!del)
     }
 
-    const sortHandler = () => {
-      axios.get("http://localhost:8090/letmein/sortLike")
-      .then((res)=>{
-        console.log(res.data)
-      }).catch((error)=>{
-        console.error(error)
-      })
+    const deleteHandler = () =>{
+        setDel(!del)
+        searchRef.current.value = '';
     }
+    const sortHandler = (event) => {
+      setSort(event.target.value)
+      if(event.target.value === 'like'){
+        setSortClk(true);
+      } else if (event.target.value==='recent') {
+        setSortClk(false);
+      }
+      
+    }
+
+   
   return (
     <div className='community-container'>
       <div className='search-container'>
        <Box sx={{ minWidth: 80 }}>
         <FormControl >
-          <InputLabel id="demo-simple-select-label">검색</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={search}
-            label="검색"
             onChange={handleChange}
             >
             <MenuItem value={'writer'}>작성자</MenuItem>
@@ -58,20 +70,65 @@ const Community = () => {
       component="form"
       sx={{
         flexGrow: 1}} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="검색" variant="outlined"  sx={{ width: '330px' }} inputRef={searchRef}/>
+      <TextField id="outlined-basic"  variant="outlined"  sx={{ width: '330px' }} inputRef={searchRef}/>
+      {del ?
+      <>
       <IoSearch
           size={40}
           color="#555"
           style={{marginTop:'10px'}}
           onClick={searchHandler}></IoSearch>
+      </>
+       :<>
+       <IoCloseSharp 
+          size={40}
+          color="#555"
+          style={{marginTop:'10px'}}
+          onClick={deleteHandler}
+
+       />
+       </>
+       }
     </Box>
         </div>
         <hr/>
         <div className='board-container'>
-          <span onClick={sortHandler}>인기순</span>
+        <Box sx={{width : 100 , marginLeft : 2 }}>
+          <FormControl fullWidth>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+              정렬
+            </InputLabel>
+            <NativeSelect
+              inputProps={{
+                name: '정렬',
+                id: 'uncontrolled-native',
+              }}
+              onChange={sortHandler}
+            >
+
+              {sort === 'like' ?
+              <>
+              <option value={'recent'}>최신순</option>
+              <option value={'like'}>인기순</option>
+              </>
+              :
+              <>
+              <option value={'recent'}>최신순</option>
+              <option value={'like'}>인기순</option>
+              </>
+              }
+
+             
+            </NativeSelect>
+          </FormControl>
+        </Box>
           <button onClick={() => nav("/post")}>➕</button>
         </div>
-        <CommunityMasonry searchKey={searchKey} search={search}/>
+        
+        {sortClk ? <ComSortMansory sort={sort} search={search} searchKey={searchKey}/> : 
+        <CommunityMasonry searchKey={searchKey} search={search} />
+        }
+
     </div>
   ) 
   }

@@ -1,25 +1,21 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 const MasonryItem = ({ item }) => {
   const imgRef = useRef(null);
   const nav = useNavigate();
+  const [showText, setShowText] = useState(false);
+  const post_num = item.postNum;
+  // 글 상세보기
   const GoDetail = () => {
-    const post_num = item.postNum;
     nav(`/CommunityDetail/${post_num}`,{state:{item}})
   }
-  useEffect(() => {
-    const img = imgRef.current;
-    if (img) {
-      img.onload = () => {
-        const height = img.clientHeight;
-      };
-    }
-  }, [item]);
 
+  
   return (
-    <div className='masonry-item' >
-      {item.postImgsrc != null ? (
+    <div className='masonry-item' style={{ position: 'relative' }}>
         <img
           ref={imgRef}
           src={item.postImgsrc}
@@ -27,25 +23,27 @@ const MasonryItem = ({ item }) => {
           alt={`Post ${item.post_num}`}
           style={{ width: '220px' }}
           onClick={GoDetail}
+          onMouseEnter={() => setShowText(true)}
+          onMouseLeave={() => setShowText(false)}
         />
-      ) : (
-        ""
-      )}
-       {item.post_imgsrc != null ? (
-        <img
-          ref={imgRef}
-          src={item.postImgsrc}
-          className='masonry-content'
-          alt={`Post ${item.post_num}`}
-          style={{ width: '220px' }}
-          onClick={GoDetail}
-        />
-      ) : (
-        ""
-      )}
-    </div>
-  );
-}
+        {showText && (
+          <p
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '0',
+              zIndex: '1',
+              textAlign: 'center',
+              width: '100%',
+              color: 'white'
+            }}
+          >
+            {item.postTitle}
+          </p>
+        )}
+   </div>
 
+)
+ }
 export default MasonryItem;
 

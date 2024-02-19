@@ -16,7 +16,6 @@ import PostDetail from './components/PostDetail';
 import Mypage from './components/Mypage';
 import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
-import ContactCustomer from './components/ContactCustomer';
 import Upload from './components/Upload';
 import FindPw from './components/FindPw';
 import { useEffect, useState } from 'react';
@@ -24,7 +23,11 @@ import Modal from 'react-modal';
 import { UserContext } from './context/UserContext';
 import CommunityDetail from './components/CommunityDetail';
 import ComUpdate from './components/ComUpdate';
-
+import Detail from './components/Detail';
+import ContactCustomer from './components/ContactCustomer';
+import CustomerDetail from './components/CustomerDetail';
+import CustomerPost from './components/CustomerPost';
+import FAQ from './components/FAQ';
 function App() {
   const [user_id, setId] = useState("");
   const [user_pw, setPw] = useState("");
@@ -33,12 +36,15 @@ function App() {
   const [user_nick, setNick] = useState("");
   const [searchKey , setSearchKey] = useState("");
   const [login, setLogin] = useState(false);
+  const [del, setDel] = useState(true);
+  const [sortClk, setSortClk] = useState(false);
+  const [sort, setSort] = useState("");
   useEffect(()=>{
     Modal.setAppElement("#root");
   },[]);
   return (
     <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
-     ,searchKey , setSearchKey}}>
+     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort}}>
     <div className="App">
       <Header/>
       <hr/>
@@ -59,7 +65,12 @@ function App() {
         <Route path='upload' element={<Upload/>}/>
         <Route path='findPw' element={<FindPw/>}/>
         <Route path='/CommunityDetail/:postId' element={<CommunityDetail />} />
+        <Route path='/Detail/:post_id' element={<Detail />} />
         <Route path='/ComUpdate/:num' element={<ComUpdate/>} />
+        <Route path='/contactCustomer' element={<ContactCustomer/>}/>
+        <Route path='/customerDetail/:num' element={<CustomerDetail/>}/>
+        <Route path='/customerPost' element={<CustomerPost/>}/>
+        <Route path='/faq' element={<FAQ/>}/>
       </Routes>
       <Footer/>
     </div>
