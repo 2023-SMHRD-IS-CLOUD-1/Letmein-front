@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 import {Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -28,6 +29,9 @@ import ContactCustomer from './components/ContactCustomer';
 import CustomerDetail from './components/CustomerDetail';
 import CustomerPost from './components/CustomerPost';
 import FAQ from './components/FAQ';
+import Type from './components/Type';
+import TypeInfo from './components/TypeInfo';
+import TypeDetail from './components/TypeDetail';
 function App() {
   const [user_id, setId] = useState("");
   const [user_pw, setPw] = useState("");
@@ -39,12 +43,36 @@ function App() {
   const [del, setDel] = useState(true);
   const [sortClk, setSortClk] = useState(false);
   const [sort, setSort] = useState("");
+  const [search, setSearch] = useState(false);
+
   useEffect(()=>{
+
+    console.log('현재 프엔 세션', sessionStorage.getItem('user'))
     Modal.setAppElement("#root");
+    const fetchUser = async () => {
+      axios.post("http://localhost:8090/letmein/login",{
+        user_id : sessionStorage.getItem('user'),
+      })
+      .then((res) => {
+      if (res != null){
+        setId(res.data[0].user_id)
+        setLogin(true)
+      }
+      console.log(res);
+    })
+    .catch((error) => {
+      console.error('세션 가져오기 오류', error);
+    });
+  }
+    
+
+    fetchUser();
+
   },[]);
+
   return (
     <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
-     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort}}>
+     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort, search, setSearch}}>
     <div className="App">
       <Header/>
       <hr/>
@@ -71,6 +99,8 @@ function App() {
         <Route path='/customerDetail/:num' element={<CustomerDetail/>}/>
         <Route path='/customerPost' element={<CustomerPost/>}/>
         <Route path='/faq' element={<FAQ/>}/>
+        <Route path='type' element={<Type/>}/>
+        <Route path='typeDetail' element={<TypeDetail/>}/>
       </Routes>
       <Footer/>
     </div>

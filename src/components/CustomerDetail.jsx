@@ -7,13 +7,24 @@ import { useNavigate } from 'react-router-dom';
 import '../css/customer.css'
 import manage  from '../images/manage.png'
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 const CustomerDetail = () => {
-const { num } = useParams();
-const [post, setPost] = useState('');
-const nav = useNavigate();
-const goBack = () => {
-  nav("/contactCustomer")
-}
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const { num } = useParams();
+  const [post, setPost] = useState('');
+  const nav = useNavigate();
+  const {user_id} = useContext(UserContext);
+
+  const goBack = () => {
+  if(user_id === 'ADMIN'){
+    nav("/admin")
+  } else{
+    nav("/contactCustomer")
+  }
+  }
+  
 
 useEffect(()=>{
     axios.post("http://localhost:8090/letmein/customerNum",{
@@ -23,6 +34,20 @@ useEffect(()=>{
     }).catch((error)=> 
     console.error(error))
 },[num])
+// 답변 제출
+  const submitHandler = () => {
+    axios.post("http://localhost:8090/letmein/helpAnswer",{
+      help_answer_content : content,
+      help_num : num
+    }).then((res)=>{
+      console.log(res)
+      alert('답변이 등록되었습니다.')
+      nav("/contactCustomer")
+    }).catch((error)=>{
+      console.error(error)
+    })
+  }
+
   return (
     <div className='cus-container'>
       <button onClick={goBack}>
@@ -41,8 +66,22 @@ useEffect(()=>{
     
       {post.help_answer === 'N' ? 
         <>
-        <div className='customer-answer'>
+          <div className='customer-answer'>
+                {user_id === 'ADMIN' ? 
+                <>
+                <div className='answer-input'>
+                  <h3 className='title'>A.</h3>
+                  <label>
+                    <p className='left'>내용 :</p>
+                    <textarea name="content" cols="30" rows="10" onChange={(e)=>setContent(e.target.value)}/>
+                  </label>
+                  <button type='submit' className='write-btn' onClick={submitHandler}>답변 등록</button>
+                  <p className='title'></p>
+                  </div>
+          </>
+          :
           <p>답변이 등록되지 않았습니다</p>
+          }
         </div>
         </>
         : 
@@ -51,7 +90,7 @@ useEffect(()=>{
             <div className='customer-user'>
             <img src={manage}></img>
             <span style={{fontSize:'20px' , color:'40A2D8', fontWeight:'bold', marginLeft:'5px'}}>고객센터 담당자</span>
-            <span style={{marginTop:'45px' , marginRight:'100px'}}>의 답변</span>
+            <span style={{marginTop:'45px' , marginRight:'50px'}}>의 답변</span>
             </div>
             <p>{post.help_answer_content}</p>
             </div>

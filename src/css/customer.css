@@ -1,0 +1,83 @@
+.customer-container {
+ margin-bottom: 50px;
+}
+.customer-menu {
+    margin-left: 180px;
+    display: flex;
+    gap: 30px;
+}
+.question{
+    padding: 20px;
+    background-color: rgb(245, 240, 245);
+    border-radius: 5px;
+}
+
+.answer{
+    padding: 20px;
+    border: solid 1px;
+    border-radius: 5px;
+    border-color: rgb(190, 178, 192);
+}
+
+.faq-container button{
+     background-color: black;
+     color: white;
+     padding: 10px;
+     border: none;
+     border-radius: 10px;
+     margin-left: 385px;
+     margin-bottom: 20px;
+     margin-top: 20px
+}
+
+.customer-date {
+    display: flex;
+    gap: 20px;
+    color: gray;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.customer-answer {
+    background-color: rgb(250, 248, 248);
+    padding: 30px;
+    border-top: 3px solid;
+    border-top-color: rgb(221, 219, 219);
+}
+.customer-answer  span{
+    margin-top: 40px;
+}
+.customer-user{
+     display: flex;
+}
+
+.customer-answer p {
+    margin-left: 30px;
+}
+
+.customer-content{
+    padding: 20px;
+}
+
+.cus-container{
+    padding: 10px;
+}
+.cus-container button{
+    background: none;
+    border: none;
+}
+
+.answer-input input {
+    width: 100%;
+}
+
+.answer-input textarea{
+    width: 100%;
+}
+
+.answer-input button{
+    background-color: black;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+}

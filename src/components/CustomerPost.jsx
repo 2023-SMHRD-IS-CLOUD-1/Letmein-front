@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 const CustomerPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");

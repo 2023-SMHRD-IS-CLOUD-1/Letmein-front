@@ -1,0 +1,40 @@
+.admin-container {
+    padding: 20px;
+}
+
+.graph {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .graph h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+.graph-btn {
+    background-color: black;
+    border:none;
+    color: white;
+    padding : 6px;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+
+  .admin-search {
+    display: flex;
+  }
+
+  .admin-search button{
+    background: none;
+    border: none;
+  }

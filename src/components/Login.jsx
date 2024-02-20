@@ -31,6 +31,7 @@ const Login = () => {
           setErrorMessage('');
           alert('로그인 성공'); 
           setLogin(true);
+          sessionStorage.setItem('user', res.data[0].user_id)
           nav("/")
         }
       }

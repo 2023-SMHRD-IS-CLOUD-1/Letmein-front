@@ -5,51 +5,48 @@ import { useNavigate } from 'react-router-dom';
 import uploadImage from '../authUtils';
 import TypeInfo from './TypeInfo';
 import AWS from 'aws-sdk'
+import Img from '../images/img.png'
+// 내 체형 업로드 --> 체형분석
 
 const  Upload  = () => {
-  const nav = useNavigate();
+  const [imgFile, setImgFile] = useState("");
+  const [img, setImg] = useState("");
   const imgRef = useRef();
-  const [imgFile, setImgFile] = useState(null);
-  
-  const handleFileChange = (e) => {
 
-    setImgFile(e.target.files[0]);
-  }
-  const handleUpload = () => {
-    if(!imgFile){
-      alert('파일을 선택해주세요')
+  // 체형 분석후 성공하면 true로 바꾸기
+  const [suc, setSuc] = useState(false);
+      
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+      setImg(file);
+    };
+  };
+
+  const handleSubmit = () => {
+    if (!imgFile) {
+      alert('파일을 선택해주세요');
       return;
     }
-    console.log(imgFile)
-    
-    AWS.config.update({
-      accessKeyId:'AKIA2UC3EBSVRKE3FREQ',
-      secretAccessKey:'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',
-      region:'us-east-2'
-    });
-    const s3 = new AWS.S3();
-
-    const UploadParams = {
-      Bucket : 'letmein0229',
-      Key : imgFile.name,
-      Body : imgFile,
-    };
-    s3.upload(UploadParams, (err,data)=>{
-      if(err){
-        console.error(err)
-      } else {
-        console.log(data)
-      }
-    })
   }
-
-
-  
   return (
+ 
     <div className='upload-container'>
-      <input type='file' onChange={handleFileChange}></input>
-      <button onClick={handleUpload}>Upload</button>
-      {<TypeInfo/>}
+         <div className='previewImg'>
+          <img src={imgFile || Img} alt="코디 이미지를 업로드 해주세요" />
+          </div>
+    <div className='uploadImg'>
+    <label htmlFor='profileImg'>파일선택</label>
+    <input type='file' accept='image/*' id='profileImg' onChange={saveImgFile} ref={imgRef} />
+    </div>
+    <div className='upload-btn'>
+      {/*분석 성공 하면 typeinfo로 가기 */}
+      {!suc ? <button >분석하러 가기💨💨</button> : <TypeInfo/>}
+      <TypeInfo/>
+    </div>
     </div>
 )
   }

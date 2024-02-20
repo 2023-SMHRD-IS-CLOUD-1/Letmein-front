@@ -3,6 +3,7 @@ import main1 from '../images/Main.jpg';
 import main2 from '../images/Main2.png';
 import main3 from '../images/Main3.jpg';
 import '../css/main.css';
+import mainIntroduce from '../images/mainIntroduce.jpg'
 
 const Main = () => {
   // 이미지 리스트와 현재 인덱스를 상태로 관리
@@ -36,6 +37,7 @@ const Main = () => {
         <div>
           <h1>FASHION</h1>
           <span></span>
+         <img src={mainIntroduce} alt='메인 소개이미지' style={{maxWidth : '100%'}} />`
         </div>
       </div>
     </div>

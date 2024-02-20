@@ -1,3 +1,4 @@
+
 .search-container{
   display: flex;
   margin-bottom: 30px;
@@ -24,38 +25,44 @@ element.style {
 .board-container span{
   margin-left: 20px;
 }
-
+.board-container {
+  display: flex;
+}
 .board-container button{
   margin-left: 320px;
   border: none;
   background-color: black;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .photo-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 각 열의 너비를 자동으로 조절합니다 */
-  grid-gap: 10px; /* 그리드 아이템 사이의 간격을 지정합니다 */
+  grid-gap: 10px; 
 }
 
 .my-masonry-grid{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left:-10px ;
+  margin-left:-5px ;
   width: auto;
 }
 .my-masonry-grid_column{
-  padding-left: 16px;
+  padding-left: 10px;
   background-clip: padding-box;
 }
 .my-masonry-grid_column > div {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .masonry-content{
   border-radius: 10px;
+}
+.masonry-content:hover {
+  filter: brightness(0.5);
 }
 
 .masonry button{
@@ -108,4 +115,8 @@ element.style {
   border-radius: 5px;
   color: white;
   margin: 5px;
+}
+
+.faq-container {
+  padding: 10px;
 }

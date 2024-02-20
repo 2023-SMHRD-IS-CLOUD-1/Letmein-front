@@ -18,7 +18,7 @@ import { create } from '@mui/material/styles/createTransitions';
     const columns = [
         { id: 'num', label: '글번호', minWidth: 20 , align : 'center'},
         { id: 'user', label: '작성자', minWidth: 40 , align : 'center'},
-        { id: 'title', label: '문의글', minWidth: 150 , align : 'center'},
+        { id: 'title', label: '제목', minWidth: 150 , align : 'center'},
         {id: 'answer', label: '답변여부', minWidth: 20,align: 'center'},
       ];
       
