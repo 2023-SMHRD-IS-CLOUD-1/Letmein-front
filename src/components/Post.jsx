@@ -37,8 +37,8 @@ const Post = () => {
     }
     
     AWS.config.update({
-      accessKeyId: 'AKIA2UC3EBSVRKE3FREQ',
-      secretAccessKey: '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',
+      accessKeyId: process.env.REACT_APP_CLIENT_ID,
+      secretAccessKey: process.env.REACT_APP_SECRET,
       region: 'us-east-2'
     });
     const s3 = new AWS.S3();
