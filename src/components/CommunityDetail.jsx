@@ -19,7 +19,8 @@ import { MdDelete } from "react-icons/md";
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import axios from 'axios';
-import '../fonts/Pretendard-Bold.ttf'
+import '../css/community.css'
+
 const CommunityDetail = () => {
     const {user_id} =useContext(UserContext);
     const location = useLocation();
@@ -46,7 +47,7 @@ const CommunityDetail = () => {
         }
         setNum(item.postNum)
         // 글 작성자의 닉네임 조회
-        axios.post("http://localhost:8090/letmein/nickFind",{
+        axios.post("/nickFind",{
             user_id : item.userId
         }).then((res)=>{
             setNick(res.data[0].user_nick);
@@ -55,7 +56,7 @@ const CommunityDetail = () => {
         })
     }, [item]);
     useEffect(()=>{
-        axios.post("http://localhost:8090/letmein/countLike",{
+        axios.post("/letmein/countLike",{
             post_num : num
         }).then((res)=>{
             setCntLike(res.data);
@@ -63,7 +64,7 @@ const CommunityDetail = () => {
             console.error(error)
         })
         
-        axios.post("http://localhost:8090/letmein/countUser",{
+        axios.post("/countUser",{
             user_id : user_id
         }).then((res)=>{
             if(res.data.includes(num)){
@@ -80,7 +81,7 @@ const CommunityDetail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else if(!like){
-            axios.post("http://localhost:8090/letmein/like",{
+            axios.post("/like",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{
@@ -96,7 +97,7 @@ const CommunityDetail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else{
-            axios.post("http://localhost:8090/letmein/unlike",{
+            axios.post("/unlike",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{
@@ -118,7 +119,7 @@ const CommunityDetail = () => {
     }
     // 글 삭제
     const deleteHandler = () => {
-        axios.post("http://localhost:8090/letmein/postDelete",{
+        axios.post("/postDelete",{
             post_num : num,
         }).then((res)=>{
             alert("게시글이 삭제되었습니다")
@@ -138,7 +139,7 @@ const CommunityDetail = () => {
         </div>
         <div className='userIdcont'>
         <AccountCircleRoundedIcon style={{fontSize:'40px'}}/>
-        <span style={{fontSize:'25px', marginTop:'-10px'}}>{nick}</span>
+        <span style={{fontSize:'25px'}}>{nick}</span>
         <span>| </span>
         <span>@{item.userId}</span>
         {item.userId === user_id ? <> <MdEdit style={{fontSize:'30px'}} onClick={updateHandler}/>
@@ -147,14 +148,14 @@ const CommunityDetail = () => {
         {like || Idis ?  <FcLike style={{fontSize:'30px'}} onClick={unLike}/>: <FcLikePlaceholder style={{fontSize:'30px'}} onClick={likeHandler}/>}
         {cntLike}
         </div>
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            <ListItem>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', fontFamily : 'Pretendard-Medium' }}>
+            <ListItem >
                 <ListItemAvatar>
                 <Avatar><TiInfoLarge /></Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="제목" secondary={item.postTitle}/>
+                <ListItemText  primary="제목" secondary={item.postTitle} />
             </ListItem>
-            <ListItem>
+            <ListItem >
                 <ListItemAvatar><Avatar><TiInfoLarge /></Avatar>
                 </ListItemAvatar>
                 <ListItemText primary="신체 정보" secondary={item.postContent} />

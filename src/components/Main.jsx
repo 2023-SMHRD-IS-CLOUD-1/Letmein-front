@@ -10,6 +10,29 @@ const Main = () => {
   const [images] = useState([main1, main2, main3]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // 자동 타이핑
+    const [Title, setTitle] = useState('');
+    const [count, setCount] = useState(0);
+    const completionWord = "Meet your own fashion coordinator at Let Me In";
+
+    useEffect(()=>{
+      const typingInterval = setInterval(()=>{
+        setTitle((prevTitleValue)=> {
+          let result = prevTitleValue ? prevTitleValue + completionWord[count] : completionWord[0];
+          setCount(count+1)
+
+          if (count >= completionWord.length) {
+            setCount(0);
+            setTitle('');
+          }
+          return result;
+        });
+      },150);
+      return () => {
+        clearInterval(typingInterval);
+      }
+    })
+
   // 다음 이미지로 이동하는 함수
   const goToNextSlide = () => {
     const nextIndex = (currentIndex + 1) % images.length;
@@ -27,17 +50,15 @@ const Main = () => {
       <div style={{ position: 'relative', width: 'auto', marginTop: '20px' }}>
         <img src={images[currentIndex]} style={{ width: '100%' }} alt="Main" />
         <p className='overlay-text'>
-          Meet your own<br/>
-          fashion coordinator<br/>
-          at Let Me In
+          {Title}
         </p>
         <hr className='overlay-horizon'/>
         <button className='overlay-button-left' onClick={() => setCurrentIndex((currentIndex - 1 + images.length) % images.length)}>&lt;</button>
         <button className='overlay-button-right' onClick={goToNextSlide}>&gt;</button>
         <div>
           <h1>FASHION</h1>
+          <img src={mainIntroduce} alt='메인 소개이미지' style={{maxWidth : '100%'}} />
           <span></span>
-         <img src={mainIntroduce} alt='메인 소개이미지' style={{maxWidth : '100%'}} />`
         </div>
       </div>
     </div>

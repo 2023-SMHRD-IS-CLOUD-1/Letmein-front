@@ -16,7 +16,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import NativeSelect from '@mui/material/NativeSelect';
 import ComSort from './ComSort';
 import ComSortMansory from './ComSortMansory';
-
+import '../fonts/Pretendard-Medium.ttf'
 
 const Community = () => {
     const nav = useNavigate();
@@ -59,10 +59,11 @@ const Community = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={search}
+            sx={{fontFamily:'Pretendard-Medium'}}
             onChange={handleChange}
             >
-            <MenuItem value={'writer'}>작성자</MenuItem>
-            <MenuItem value={'title'}>제목</MenuItem>
+            <MenuItem sx={{fontFamily:'Pretendard-Medium', fontSize:'18px'}} value={'writer'}>작성자</MenuItem>
+            <MenuItem sx={{fontFamily:'Pretendard-Medium', fontSize:'18px'}} value={'title'}>제목</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -70,7 +71,7 @@ const Community = () => {
       component="form"
       sx={{
         flexGrow: 1}} noValidate autoComplete="off">
-      <TextField id="outlined-basic"  variant="outlined"  sx={{ width: '330px' }} inputRef={searchRef}/>
+      <TextField id="outlined-basic"  variant="outlined"  sx={{ width: '330px', fontFamily:'Pretendard-Medium' }} inputRef={searchRef}/>
       {del ?
       <>
       <IoSearch
@@ -95,7 +96,7 @@ const Community = () => {
         <div className='board-container'>
         <Box sx={{width : 100 , marginLeft : 2 }}>
           <FormControl fullWidth>
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            <InputLabel variant="standard" htmlFor="uncontrolled-native" sx={{fontFamily:'Pretendard-Medium', fontSize:'20px'}}>
               정렬
             </InputLabel>
             <NativeSelect
@@ -103,12 +104,13 @@ const Community = () => {
                 name: '정렬',
                 id: 'uncontrolled-native',
               }}
+              sx={{fontFamily:'Pretendard-Medium'}}
               onChange={sortHandler}
             >
 
               {sort === 'like' ?
               <>
-              <option value={'recent'}>최신순</option>
+              <option value={'recent'} >최신순</option>
               <option value={'like'}>인기순</option>
               </>
               :

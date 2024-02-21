@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+
+// 커뮤니티 글 수정
+
 const ComUpdate = () => {
     const nav = useNavigate();
     const location = useLocation();
@@ -31,7 +34,7 @@ const ComUpdate = () => {
     },[item])
    
     const handleSubmit  = () => {
-        axios.post("http://localhost:8090/letmein/postModify",{
+        axios.post("postModify",{
             post_title : title,
             post_content : content,
             post_acc : acc,
@@ -60,7 +63,7 @@ const ComUpdate = () => {
           autoComplete="off"
         >
           < TextField id="standard-basic" label="제목" variant="standard" onChange={(e)=>setTitle(e.target.value)}
-          defaultValue={item.postTitle} helperText={"제목을 입력해주세요"}/>
+          defaultValue={item.postTitle} helperText={"제목을 입력해주세요"} />
           < TextField id="standard-basic" label="정보" variant="standard" onChange={(e)=>setContent(e.target.value)}
           defaultValue={item.postContent} helperText={"체형, 몸무게 등의 정보를 입력해주세요"}/>
           < TextField id="standard-basic" label="상의" variant="standard" onChange={(e)=>setTop(e.target.value)}

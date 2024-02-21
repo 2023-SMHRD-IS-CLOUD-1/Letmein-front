@@ -1,5 +1,17 @@
 
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+}
+
+
 .search-container{
+  font-family: 'Pretendard-Bold';
   display: flex;
   margin-bottom: 30px;
   margin-left: 25px;
@@ -74,23 +86,27 @@ element.style {
   margin-bottom: 20px;
 }
 
+.masonry {
+  font-family: 'Pretendard-Medium';
+}
 
 .detail-container img{
   width: 400px;
 }
 .detail-container {
   position: relative;
+  font-family: 'Pretendard-Medium';
 }
 
 .icon-container {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1; /* 이미지보다 위에 렌더링됨 */
+  z-index: 1;
 }
 
 .image-container {
-  position: relative; /* 이미지는 아이콘 위에 렌더링되므로 위치를 상대적으로 설정 */
+  position: relative; 
 }
 
 .detail-container img {
@@ -119,4 +135,12 @@ element.style {
 
 .faq-container {
   padding: 10px;
+}
+
+.post-container {
+  font-family: Pretendard-Medium;
+}
+
+#standard-basic {
+  font-family: Pretendard-Bold;
 }

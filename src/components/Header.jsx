@@ -19,13 +19,13 @@ const Header = () => {
       <div className='header-container'>
         <img src={logo} alt="Logo" style={{ width: '160px', cursor: 'pointer'}} onClick={()=>nav("/")}/>
         <div className="navigation-links">
-          <Link to="/community" style={{ marginTop:'10px'}} > 커뮤니티</Link>
+          <Link to="/community" style={{ marginTop:'12px' ,fontSize:'20px'}}  > 커뮤니티</Link>
           <FadeMenu/>
         </div>
         <div className="user-links">
           {login == true ? 
-          <Link to="/" style={{fontSize:'15px'}} onClick={Logout}>LOGOUT</Link>
-          : <Link to="/login" style={{fontSize:'15px'}}>LOGIN</Link>}
+          <Link to="/" style={{fontSize:'16px'}} onClick={Logout}>LOGOUT</Link>
+          : <Link to="/login" style={{fontSize:'17px'}}>LOGIN</Link>}
           
           <span className='divider'>|</span>
           {user_id === 'ADMIN' && login ?

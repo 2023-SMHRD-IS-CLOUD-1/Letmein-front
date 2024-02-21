@@ -1,5 +1,17 @@
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+}
+
+
 .id-container{
   width: auto;
+  font-family: Pretendard-Medium;
 }
 .center-input{
   margin-top: 50px;
@@ -30,20 +42,28 @@
   color: white;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 30px;
+  font-family: Pretendard-Medium;
+  font-size: 20px;
 }
 .id-container p {
   margin-right: 70px;
+  font-family: Pretendard-Medium;
+  font-size: 17px;
 }
 .center-input p {
   margin-right: 80px;
+  font-family: Pretendard-Medium;
+  font-size: 16px;
 }
 .user-container{
   margin-top: 20px;
     text-align: center;
+    font-family: Pretendard-Bold;
 }
 .user-container span{
     margin-right: 15px;
+    font-size: 20px;
 }
 .id-container p {
   margin-left: 50px;
@@ -60,7 +80,7 @@ border-radius: 5px;
 width: 105px;
 text-align: center;
 margin-right: 30px;
-font-size: 13px;
+font-size: 14px;
 }
 
 .center-input span {
@@ -72,6 +92,9 @@ color: red;
 margin-bottom: 20px;
 }
 
+.join-container {
+  font-family: Pretendard-Medium;
+}
 .join-container button{
   background-color: black;
   border: none;
@@ -84,3 +107,35 @@ margin-bottom: 20px;
 .message{
   margin-left: 70px;
 }
+
+.find-email span{
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.find-container input {
+  width: 480px;
+}
+
+.find-container button {
+  color: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 400px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  font-family: Pretendard-Medium;
+  font-size: 20px;
+}
+.find-container {
+  text-align: center;
+  font-family: Pretendard-Medium;
+}
+
+

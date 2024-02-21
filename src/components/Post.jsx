@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 const Post = () => {
   const nav = useNavigate();
+
+  // 글 작성
   const { user_id } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -16,6 +18,8 @@ const Post = () => {
   const [top, setTop] = useState("");
   const [pants, setPants] = useState("");
   const [shoe, setShoe] = useState("");
+
+  // 이미지 업로드
   const [imgFile, setImgFile] = useState("");
   const [img, setImg] = useState("");
   const imgRef = useRef();
@@ -55,7 +59,7 @@ const Post = () => {
       } else {
         console.log(data);
 
-        axios.post("http://localhost:8090/letmein/post", {
+        axios.post("/post", {
           post_title: title,
           post_content: content,
           post_acc: acc,
@@ -90,25 +94,37 @@ const Post = () => {
           component="form"
           sx={{
             '& > :not(style)': { m: 1, width: 'auto' },
+            fontFamily:'Pretendard-Medium'
           }}
           noValidate
           autoComplete="off"
         >
           < TextField id="standard-basic" label="제목" variant="standard" onChange={(e)=>setTitle(e.target.value)}
-          required autoFocus={!title} error={!title} helperText={!title ? "제목을 필수로 입력해주세요" : "제목을 입력해주세요"}/>
+          required autoFocus={!title} error={!title} helperText={!title ? "제목을 필수로 입력해주세요" : "제목을 입력해주세요"}
+          style={{fontFamily:'Pretendard-Medium'}} InputLabelProps={{
+            style: {
+              fontFamily: 'Pretendard-Bold', fontSize : '23px'
+            }
+          }}
+          />
           < TextField id="standard-basic" label="정보" variant="standard" onChange={(e)=>setContent(e.target.value)}
-          required autoFocus={!content} error={!content} 
+          required autoFocus={!content} error={!content} InputLabelProps={{
+            style: { fontFamily: 'Pretendard-Bold', fontSize : '23px'}}}
           helperText={!content ? "체형, 몸무게 등의 정보를 입력해주세요" : "체형, 몸무게 등의 정보를 입력해주세요"}/>
           < TextField id="standard-basic" label="상의" variant="standard" onChange={(e)=>setTop(e.target.value)}
-          helperText={"상의 정보를 입력해주세요"}/>
+          helperText={"상의 정보를 입력해주세요"} InputLabelProps={{
+            style: { fontFamily: 'Pretendard-Bold', fontSize : '23px'}}}/> 
           < TextField id="standard-basic" label="하의" variant="standard" onChange={(e)=>setPants(e.target.value)}
-          helperText={"하의 정보를 입력해주세요"}/>
+          helperText={"하의 정보를 입력해주세요"} InputLabelProps={{
+            style: { fontFamily: 'Pretendard-Bold', fontSize : '23px'}}}/>
           < TextField id="standard-basic" label="액세서리" variant="standard" onChange={(e)=>setAcc(e.target.value)}
-          helperText={"액세서리 정보를 입력해주세요"}/>
+          helperText={"액세서리 정보를 입력해주세요"} InputLabelProps={{
+            style: { fontFamily: 'Pretendard-Bold', fontSize : '23px'}}}/>
           < TextField id="standard-basic" label="신발" variant="standard" onChange={(e)=>setShoe(e.target.value)}
-          helperText={"신발 정보를 입력해주세요"}/>
+          helperText={"신발 정보를 입력해주세요"} InputLabelProps={{
+            style: { fontFamily: 'Pretendard-Bold', fontSize : '23px'}}}/>
         </Box>
-        <button onClick={handleSubmit} type='submit'>등록</button>
+        <button style={{fontFamily:'Pretendard-Medium'}} onClick={handleSubmit} type='submit'>등록</button>
       </div>
     </div>
   );

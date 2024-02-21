@@ -13,7 +13,7 @@ const CustomerPost = () => {
     const nav = useNavigate();
 
     const submitHandler = () => {
-        axios.post("http://localhost:8090/letmein/customerPost",{
+        axios.post("/customerPost",{
             help_title : title,
             help_content : content,
             user_id : user_id

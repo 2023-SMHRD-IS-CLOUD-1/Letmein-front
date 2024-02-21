@@ -1,48 +1,105 @@
-.mypage-container {
-    text-align: center;
-}
-.mypage-container button{
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    margin-left: 10px;
-}
-.mypage-container .userImg {
-    width: 100px;
-    border-radius: 50%;
-}
-.mypage-container table {
-    border-spacing: 0 20px;
-}
-.mypage-container table td {
-    padding-left: 20px;
-}
-.mypage-container .search-container {
-    height: 25px;
-    width: 300px;
-}
-.mypage-container .title {
-    padding-bottom: 30px;
-}
-.mypage-container .contact-container {
-    text-align: left;
-}
-.mypage-container .write-btn {
-    float: right;
-}
 
-.mypage-container label {
-    display: block; /* 줄 바꿈 */
-    margin: 10px 0; /* 위아래 여백 추가 */
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
   }
   
-  .mypage-container input[name='title'],
-  .mypage-container textarea[name='content'] {
-    width: 100%; /* 너비를 최대로 설정 */
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
   }
-  .mypage-container .left {
-    text-align: left;
+  
+  .mypage-container {
+      text-align: center;
+      font-family: 'Pretendard-Medium';
   }
-  .mypage-container .admin {
-    text-align: right;
+  .mypage-container button{
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      margin-left: 10px;
+      font-family: 'Pretendard-Bold';
+      font-size: 18px;
   }
+  .mypage-container .userImg {
+      width: 100px;
+      border-radius: 50%;
+  }
+  .mypage-container table {
+      border-spacing: 0 20px;
+  }
+  .mypage-container table td {
+      padding-left: 20px;
+  }
+  .mypage-container .search-container {
+      height: 25px;
+      width: 300px;
+  }
+  .mypage-container .title {
+      padding-bottom: 30px;
+  }
+  .mypage-container .contact-container {
+      text-align: left;
+  }
+  .mypage-container .write-btn {
+      float: right;
+  }
+  
+  .mypage-container label {
+      display: block; /* 줄 바꿈 */
+      margin: 10px 0; /* 위아래 여백 추가 */
+    }
+    
+    .mypage-container input[name='title'],
+    .mypage-container textarea[name='content'] {
+      width: 100%; /* 너비를 최대로 설정 */
+    }
+    .mypage-container .left {
+      text-align: left;
+    }
+    .mypage-container .admin {
+      text-align: right;
+    }
+  
+    .img-container {
+      margin-top : 20px;
+    }
+  
+    .mypage-filter {
+      padding: 10px;
+      gap: 10px;
+      font-size: 20px;
+    }
+    .edit-container {
+      padding: 10px;
+      font-family: Pretendard-Medium;
+      font-size: 18px;
+    }
+    .edit-container input{
+      width: 430px;
+      background-color: #EEEDEC;
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .edit-container button{
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 14px;
+      margin-right: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-family: Pretendard-Medium;
+      font-size: 16px;
+    }
+  
+    .edit-button {
+      text-align: center;
+    }
+  
+  

@@ -54,7 +54,7 @@ export default function StickyHeadTable() {
   };
 
   useEffect(()=>{
-    axios.get("http://localhost:8090/letmein/helpNo").
+    axios.get("/helpNo").
     then((res)=>{
         console.log(res)
         const newRows = res.data.map((item) => (
@@ -81,7 +81,7 @@ export default function StickyHeadTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth , fontFamily:'Pretendard-Bold', fontSize:'17px'}}
                 >
                   {column.label}
                 </TableCell>
@@ -97,7 +97,8 @@ export default function StickyHeadTable() {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align} onClick={(event) => goDetail(event, row.num)}>
+                        <TableCell style={{fontFamily:'Pretendard-Medium', fontSize:'16px'}}
+                         key={column.id} align={column.align} onClick={(event) => goDetail(event, row.num)}>
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}

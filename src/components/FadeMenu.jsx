@@ -24,7 +24,7 @@ export default function FadeMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         style={{color:'black',
-        fontFamily: 'Pretendard-Bold', fontSize : '17px'}}
+        fontFamily: 'Pretendard-Bold', fontSize : '20px'}}
       >
         체형분석
       </Button>
@@ -38,8 +38,8 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={()=>{setAnchorEl(null); nav("/upload")}}>이미지로 분석하기</MenuItem>
-        <MenuItem onClick={()=>{setAnchorEl(null); nav("/type")}}>옷 사이즈로 분석하기</MenuItem>
+        <MenuItem sx={{ fontFamily:' Pretendard-bold' }} onClick={()=>{setAnchorEl(null); nav("/upload")}}>이미지로 분석하기</MenuItem>
+        <MenuItem sx={{ fontFamily:' Pretendard-bold' }} onClick={()=>{setAnchorEl(null); nav("/type")}}>옷 사이즈로 분석하기</MenuItem>
       </Menu>
     </div>
   );

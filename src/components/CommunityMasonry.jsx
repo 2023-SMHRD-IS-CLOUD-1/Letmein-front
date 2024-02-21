@@ -39,7 +39,7 @@ useEffect(() => {
 }, [inView, del]);
 // 작성자 기준 검색
 const searchWriter = () => {
-  axios.get(`http://localhost:8090/letmein/searchWriter?userId=${searchKey}&page=0`)
+  axios.get(`/searchWriter?userId=${searchKey}&page=0`)
   .then((res)=>{
     if(res.data.length == 0){
       setErr(true)
@@ -56,7 +56,7 @@ const searchWriter = () => {
   }
   // 제목 기준 검색
   const searchTitle = () =>{
-    axios.get(`http://localhost:8090/letmein/searchTitle?postTitle=${searchKey}&page=0`)
+    axios.get(`/searchTitle?postTitle=${searchKey}&page=0`)
     .then((res)=>{
       if(res.data.length == 0){
         setErr(true);
@@ -76,7 +76,7 @@ const searchWriter = () => {
     const ImgFethch = () => {
       if(del){
         setErr(false)
-        axios(`http://localhost:8090/letmein/selectAll?page=${page}&size=6`)
+        axios(`/selectAll?page=${page}&size=6`)
         .then((res) => {
           setList("");
           setHow(false);

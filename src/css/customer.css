@@ -1,5 +1,17 @@
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  }
+
 .customer-container {
  margin-bottom: 50px;
+ font-family: Pretendard-Medium;
 }
 .customer-menu {
     margin-left: 180px;
@@ -10,6 +22,8 @@
     padding: 20px;
     background-color: rgb(245, 240, 245);
     border-radius: 5px;
+    font-family: Pretendard-Bold;
+    font-size: 18px;
 }
 
 .answer{
@@ -17,6 +31,7 @@
     border: solid 1px;
     border-radius: 5px;
     border-color: rgb(190, 178, 192);
+    font-size: 18px;
 }
 
 .faq-container button{
@@ -27,7 +42,9 @@
      border-radius: 10px;
      margin-left: 385px;
      margin-bottom: 20px;
-     margin-top: 20px
+     margin-top: 20px;
+     font-family: Pretendard-Medium;
+     font-size: 17px;
 }
 
 .customer-date {
@@ -61,6 +78,7 @@
 
 .cus-container{
     padding: 10px;
+    font-family: Pretendard-Medium;
 }
 .cus-container button{
     background: none;

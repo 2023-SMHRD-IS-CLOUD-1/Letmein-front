@@ -14,7 +14,7 @@ const ContactCustomer = () => {
 
   return (
     <div className='customer-container'>
-        <h4 style={{textAlign:'center'}}>고객센터</h4>
+        <h4 style={{textAlign:'center', fontSize:'20px'}}>고객센터</h4>
         <Box sx={{ marginLeft : '150px', marginBottom:'30px'}}>
         <Tabs
             value={value}
@@ -23,8 +23,8 @@ const ContactCustomer = () => {
             indicatorColor="secondary"
             aria-label="secondary tabs example"
         >
-            <Tab value="FAQ" label="FAQ" />
-            <Tab value="QUESTION" label="1:1 문의" />
+            <Tab value="FAQ" label="FAQ" sx={{fontFamily:'Pretendard-Bold', fontSize : '20px'}}/>
+            <Tab value="QUESTION" label="1:1 문의" sx={{fontFamily:'Pretendard-Bold', fontSize : '20px'}}/>
         </Tabs>
         </Box>
         <FAQ value={value}/>

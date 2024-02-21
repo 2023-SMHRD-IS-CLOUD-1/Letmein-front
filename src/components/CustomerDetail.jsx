@@ -27,7 +27,7 @@ const CustomerDetail = () => {
   
 
 useEffect(()=>{
-    axios.post("http://localhost:8090/letmein/customerNum",{
+    axios.post("/customerNum",{
         help_num : num
     }).then((res)=>{
         setPost(res.data[0])
@@ -36,7 +36,7 @@ useEffect(()=>{
 },[num])
 // 답변 제출
   const submitHandler = () => {
-    axios.post("http://localhost:8090/letmein/helpAnswer",{
+    axios.post("/helpAnswer",{
       help_answer_content : content,
       help_num : num
     }).then((res)=>{

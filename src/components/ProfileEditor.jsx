@@ -3,18 +3,41 @@ import axios from 'axios'
 import { UserContext } from '../context/UserContext';
 import emailjs from 'emailjs-com';
 import { useNavigate } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 const ProfileEditor = () => {
   const nav = useNavigate();
-  const { user_id, user_pw, setPw, user_name, setName, user_email, setEmail, user_nick, setNick } = useContext(UserContext);
+  const { user_id} = useContext(UserContext);
   const [chkPw, setChkPw] = useState("");
-
-  const edliter = () => {
-    axios.post("http://localhost:8090/letmein/profileEditor", {
+  const [pw, setPW] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [nick, setNick] = useState("");
+  useEffect(() => {
+    axios.post("http://localhost:8090/letmein/login",{
+      user_id : user_id
+    })
+    .then((res)=>{
+      console.log(res)
+      setName(res.data[0].user_name)
+      setNick(res.data[0].user_nick)
+      setEmail(res.data[0].user_email)
+      setPW(res.data[0].user_pw)
+      console.log(name, nick, email)
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }, [])
+ 
+  // 정보 수정
+  const editHandler = () => {
+    axios.post("/profileEditor", {
       user_id: user_id,
-      user_pw: user_pw,
-      user_name: user_name,
-      user_nick: user_nick,
-      user_email: user_email
+      user_pw: pw,
+      user_name: name,
+      user_nick: nick,
+      user_email: email
     })
       .then((res) => {
         console.log(res.data);
@@ -25,25 +48,33 @@ const ProfileEditor = () => {
         console.error('개인정보 수정 실패', error);
       });
   }
+
+  const backHandler = () =>{
+    nav("/myPage")
+  }
+
   return (
-    <div className='id-container'>
-      <div className='center-input'>
-        <p>아이디</p>
-        <input type='text' placeholder={user_id} name='user_id' disabled></input>
-        <p>비밀번호</p>
-        <input type='password' placeholder='비밀번호' required onChange={(e) => setPw(e.target.value)}></input>
-        <p>비밀번호 확인</p>
-        <input className='pw' type='password' placeholder='비밀번호 확인' required onChange={(e) => setChkPw(e.target.value)}></input>
-        {user_pw != chkPw && chkPw != "" ? <span>비밀번호를 다시 입력해주세요</span> : ""}
-        <p>이름</p>
-        <input className='pw' name='user_name' type='text' placeholder='이름' required onChange={(e) => setName(e.target.value)}></input>
-        <p>닉네임</p>
-        <input type='text' placeholder='닉네임' required onChange={(e) => setNick(e.target.value)}></input>
-        <p>이메일</p>
-        <input type='email' name='user_email' placeholder='이메일' required onChange={(e) => setEmail(e.target.value)}></input>
-      </div>
-      <button type='submit' onClick={edliter}> 수정 완료 </button>
+    <div className='edit-container'>
+    <label htmlFor="pw"><RiLockPasswordFill style={{ fontSize: '20px', marginRight: '10px' }} />비밀번호</label>
+    <input type='password' id='pw' onChange={(e) => setPW(e.target.value)} />
+    <label htmlFor="pwchk"><RiLockPasswordFill style={{ fontSize: '20px', marginRight: '10px' }} />비밀번호 확인</label>
+    <input type='password' id='pwchk' onChange={(e) => setChkPw(e.target.value)} />
+    {pw !== chkPw && chkPw != "" ? <span style={{color:'red', marginBottom:"2px"}}>비밀번호가 일치하지 않습니다</span>:""}
+    <br/>
+    <label htmlFor="name"><FaUser style={{ fontSize: '20px', marginRight: '10px' }} />이름</label>
+    <input type='text' id='name' defaultValue={name} onChange={(e) => setName(e.target.value)} />
+    <label htmlFor="nick"><FaUser style={{ fontSize: '20px', marginRight: '10px' }} /> 닉네임 </label>
+    <input type='text' id='nick' defaultValue={nick} onChange={(e) => setNick(e.target.value)} />
+    <label htmlFor="email"><MdEmail style={{ fontSize: '20px', marginRight: '10px' }} />이메일</label>
+    <input type='email' id='email' defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className='edit-button'>
+      <button onClick={editHandler}>수정</button>
+      <button onClick={backHandler}>취소</button>
     </div>
+  </div>
+  
+      
+
   )
 }
 

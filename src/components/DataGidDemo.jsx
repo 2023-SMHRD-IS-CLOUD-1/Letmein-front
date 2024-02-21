@@ -23,7 +23,7 @@ export default function DataGridDemo() {
 
   const allUser = () => {
     axios
-      .get('http://localhost:8090/letmein/allUser')
+      .get('/allUser')
       .then((res) => {
         const users = Object.values(res.data).map((item) => ({
           id: item.user_id,
@@ -39,7 +39,7 @@ export default function DataGridDemo() {
 
   const searchHandler = () => {
     axios
-      .post('http://localhost:8090/letmein/UserSearch', {
+      .post('/UserSearch', {
         user_id: searchKey,
       })
       .then((res) => {
@@ -59,7 +59,7 @@ export default function DataGridDemo() {
     console.log('실행');
     selectedRows.forEach((rowId) => {
       axios
-        .post('http://localhost:8090/letmein/AdminDelete', {
+        .post('/AdminDelete', {
           user_id: rowId,
         })
         .then((res) => {
@@ -74,14 +74,14 @@ export default function DataGridDemo() {
   };
 
   return (
-    <>
+    <div >
       <Box sx={{ height: 400, width: '100%' }}>
         <div className='admin-search'>
           <TextField
             id='standard-basic'
             label='id'
             variant='standard'
-            style={{ marginBottom: '10px' }}
+            
             onChange={(e) => setSearchKey(e.target.value)}
           />
           <Button onClick={searchHandler}>
@@ -91,6 +91,7 @@ export default function DataGridDemo() {
         <DataGrid
           rows={rows}
           columns={columns}
+          style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}}
           initialState={{
             pagination: {
               paginationModel: {
@@ -107,9 +108,9 @@ export default function DataGridDemo() {
           disableRowSelectionOnClick
         />
       </Box>
-      <Button className='graph-btn' onClick={deleteHandler}>
+      <Button className='graph-btn' onClick={deleteHandler} style={{fontFamily:'Pretendard-Bold', fontSize:'17px'}}>
         회원탈퇴
       </Button>
-    </>
+      </div>
   );
 }

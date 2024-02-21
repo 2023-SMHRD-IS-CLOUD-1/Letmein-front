@@ -21,7 +21,7 @@ const MasonryItem = ({ item }) => {
           src={item.postImgsrc}
           className='masonry-content'
           alt={`Post ${item.post_num}`}
-          style={{ width: '220px' }}
+          style={{ width: '230px' }}
           onClick={GoDetail}
           onMouseEnter={() => setShowText(true)}
           onMouseLeave={() => setShowText(false)}

@@ -35,7 +35,7 @@ import { create } from '@mui/material/styles/createTransitions';
         const [data, setData] = useState(false)
         useEffect(() => {
           if (value === 'QUESTION') {
-            axios.post("http://localhost:8090/letmein/customerAll", {
+            axios.post("/customerAll", {
               user_id: user_id
             })
               .then((res) => {
@@ -85,7 +85,7 @@ import { create } from '@mui/material/styles/createTransitions';
             <div className="faq-container">
               <img src={customerImage} style={{width:'480px'}}></img>
         {value === "FAQ"  ? (
-          <div>
+          <div className='faq'>
             <p className='question'>Q1. 체형 사진을 업로드하면 어떻게 체형을 분석하나요? 어저구 저저구</p>
             <p className='answer'>A. yolo를 이용해 체형을 분석해 아바타를 제작합니다</p>
           </div>
@@ -102,7 +102,7 @@ import { create } from '@mui/material/styles/createTransitions';
                       <TableCell
                         key={column.id}
                         align={column.align}
-                        style={{ minWidth: column.minWidth }}
+                        style={{ minWidth: column.minWidth , fontFamily:' Pretendard-bold' , fontSize:'17px'}}
                       >
                         {column.label}
                       </TableCell>
@@ -118,7 +118,9 @@ import { create } from '@mui/material/styles/createTransitions';
                           {columns.map((column) => {
                             const value = row[column.id];
                             return (
-                              <TableCell key={column.id} align={column.align} onClick={(event) => goDetail(event, row.num)}>
+                              <TableCell 
+                              sx={{ fontFamily:' Pretendard-Medium' , fontSize : '17px'}}
+                              key={column.id} align={column.align} onClick={(event) => goDetail(event, row.num)}>
                                 {column.format && typeof value === 'number'
                                   ? column.format(value)
                                   : value}

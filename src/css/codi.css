@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  }
+  
+
+.codi-container{
+    padding: 30px;
+    background-color: #EEEDEC;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.codi-container p {
+    font-size: 20px;
+    color: #393225;
+    font-weight: bold;
+}
+
+.avatar-codi img{
+    border: 1px solid #393225;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.avatars {
+    padding: 30px;
+    background-color: #EEEDEC;
+    border-radius: 10px;
+}
+
+.avatar-container{
+    margin-bottom: 30px;
+    font-family: Pretendard-Bold;
+}
+
+.avatar-codi {
+    display: flex;
+}
+
+.avatar-info{
+    margin-left: 18px;
+}
+
+.avatar-info p {
+    color :#393225;
+    font-weight: bold;
+}
+
+.avatar-ex {
+    background-color: #EEEDEC;
+    padding: 17px;
+    border-radius: 10px;
+    text-align: center;
+}

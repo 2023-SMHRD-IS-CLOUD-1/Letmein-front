@@ -11,7 +11,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const LoginHandler = () =>{
-    axios.post("http://localhost:8090/letmein/login",{
+    axios.post("/login",{
       user_id : user_id,
       user_pw : user_pw
     })
@@ -44,17 +44,21 @@ const Login = () => {
   return (
     <div className='id-container'>
       <div className='center-input'> 
-      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+      <Box sx={{ display: 'flex', alignItems: 'flex-end', fontFamily:'Pretendard-Medium' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="아이디를 입력해주세요" variant="standard" 
+        style={{fontFamily:'Pretendard-Medium'}}
         onChange={(e)=>setId(e.target.value)} error={!user_id} required autoFocus={!user_id}
-        helperText={!user_id ? '아이디를 입력해주세요' : ''}/>
+        helperText={!user_id ? '아이디를 입력해주세요' : ''} InputLabelProps={{
+          style: { fontFamily: 'Pretendard-Bold', fontSize : '20px'}}}/>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-        <TextField id="input-with-sx" label="비밀번호를 입력해주세요" variant="standard" 
-        onChange={(e) => setPw(e.target.value)} error={!user_pw} autoFocus={!user_pw} 
-        required helperText={!user_pw ? '비밀번호를 입력해주세요' : ''}/>
+        <TextField id="input-with" label="비밀번호를 입력해주세요" variant="standard" 
+        onChange={(e) => setPw(e.target.value)} error={!user_pw} autoFocus={!user_pw}
+        type='password' 
+        required helperText={!user_pw ? '비밀번호를 입력해주세요' : ''} InputLabelProps={{
+          style: { fontFamily: 'Pretendard-Bold', fontSize : '20px'}}}/>
       </Box>
       </div>
       {errorMessage && <p>{errorMessage}</p>}
