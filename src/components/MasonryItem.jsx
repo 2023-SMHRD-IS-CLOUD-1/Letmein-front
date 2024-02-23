@@ -27,7 +27,7 @@ const MasonryItem = ({ item }) => {
           onMouseLeave={() => setShowText(false)}
         />
         {showText && (
-          <p
+          <span
             style={{
               position: 'absolute',
               top: '50%',
@@ -39,7 +39,7 @@ const MasonryItem = ({ item }) => {
             }}
           >
             {item.postTitle}
-          </p>
+          </span>
         )}
    </div>
 

@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../css/upload.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const TypeInfo = () => {
   const nav = useNavigate();
+  const {user_id,type, setType, gender, setGender} = useContext(UserContext)
+  
   // 체형 정보
   return (
     <div className='result-container'>
         <p style={{fontSize:'30px'}}>분석이 완료되었습니다.</p>
         <div className='result'>
-        <p style={{fontSize:'24px'}}>oo님의 분석결과는</p>
-        <p style={{fontSize:'20px'}}>성별 : 여</p>
-        <p style={{fontSize:'20px'}}>체형 : 역삼각형</p>
+        <p style={{fontSize:'24px'}}>{user_id}님의 분석결과는</p>
+        <p style={{fontSize:'20px'}}>성별 : {gender == 0 ? "남" : "여"}</p>
+        <p style={{fontSize:'20px'}}>체형 : {type}</p>
         <p style={{fontSize:'17px', color:'#AE3A1E'}} onClick={()=>nav("/typeDetail")}>체형 정보가 궁금하시다면 "클릭"해보세요</p>
         <p style={{fontSize:'22px'}}>입니다.</p>
         </div>

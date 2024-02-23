@@ -65,9 +65,10 @@ const Join = () => {
   }
   // 아이디 중복 체크
   const idChek = () => {
-    axios.post("loginChk",{
+    axios.post("/loginChk",{
       user_id:user_id
     }).then((res)=>{
+      console.log(res)
       if(res.data == 0){
         setIdChk(false)
       }else{
@@ -87,7 +88,7 @@ const Join = () => {
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
       <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
       <TextField id="input-with-sx-id" label="아이디" variant="standard" 
-        onChange={(e)=>setId(e.target.value)} helperText={ [idChk ? "중복된 아이디 입니다": "", !user_id?"아이디를 입력해주세요":""]} 
+        onChange={(e)=>setId(e.target.value)} helperText={ [idChk != 0 ? "중복된 아이디 입니다" : "", !user_id?"아이디를 입력해주세요":""]} 
         required ref={idInputRef} error={!user_id} InputLabelProps={{
           style: { fontFamily: 'Pretendard-Bold', fontSize : '20px'}}}/>
     </Box>

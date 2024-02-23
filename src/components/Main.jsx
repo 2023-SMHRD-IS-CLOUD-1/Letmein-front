@@ -1,68 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import main1 from '../images/Main.jpg';
-import main2 from '../images/Main2.png';
-import main3 from '../images/Main3.jpg';
+import React, { useEffect, useState } from 'react'
+import { SectionsContainer, Section } from 'react-fullpage';
+import img1 from '../images/Main.gif'
+import img2 from '../images/001.png'
+import img3 from '../images/002.png'
 import '../css/main.css';
-import mainIntroduce from '../images/mainIntroduce.jpg'
-
 const Main = () => {
-  // 이미지 리스트와 현재 인덱스를 상태로 관리
-  const [images] = useState([main1, main2, main3]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [Title, setTitle] = useState('');
+  const [count, setCount] = useState(0);
+  const completionWord = "Meet your own fashion coordinator at Let Me In";
 
-  // 자동 타이핑
-    const [Title, setTitle] = useState('');
-    const [count, setCount] = useState(0);
-    const completionWord = "Meet your own fashion coordinator at Let Me In";
+  useEffect(()=>{
+    const typingInterval = setInterval(()=>{
+      setTitle((prevTitleValue)=> {
+        let result = prevTitleValue ? prevTitleValue + completionWord[count] : completionWord[0];
+        setCount(count+1)
 
-    useEffect(()=>{
-      const typingInterval = setInterval(()=>{
-        setTitle((prevTitleValue)=> {
-          let result = prevTitleValue ? prevTitleValue + completionWord[count] : completionWord[0];
-          setCount(count+1)
-
-          if (count >= completionWord.length) {
-            setCount(0);
-            setTitle('');
-          }
-          return result;
-        });
-      },150);
-      return () => {
-        clearInterval(typingInterval);
-      }
-    })
-
-  // 다음 이미지로 이동하는 함수
-  const goToNextSlide = () => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    setCurrentIndex(nextIndex);
+        if (count >= completionWord.length) {
+          setCount(0);
+          setTitle('');
+        }
+        return result;
+      });
+    },150);
+    return () => {
+      clearInterval(typingInterval);
+    }
+  })
+  const options = {
+    activeClass: 'active', // the class that is appended to the sections links
+    anchors: ['One', 'Two', 'Three'], // the anchors for each sections
+    arrowNavigation: true, // use arrow keys
+    navigation: false, // use dots navigatio
+    scrollBar: false, // use the browser default scrollbar
+    delay : 800
   };
 
-  useEffect(() => {
-    // 일정 시간마다 다음 이미지로 넘어가는 타이머 설정
-    const interval = setInterval(goToNextSlide, 3000); // 3초마다 변경
-    return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 타이머 제거
-  }, [currentIndex]);
+  useEffect(()=>{
+    const typingInterval = setInterval(()=>{
+      setTitle((prevTitleValue)=> {
+        let result = prevTitleValue ? prevTitleValue + completionWord[count] : completionWord[0];
+        setCount(count+1)
+
+        if (count >= completionWord.length) {
+          setCount(0);
+          setTitle('');
+        }
+        return result;
+      });
+    },150);
+    return () => {
+      clearInterval(typingInterval);
+    }
+  })
 
   return (
-    <div className='main-contaiver'>
-      <div style={{ position: 'relative', width: 'auto', marginTop: '20px' }}>
-        <img src={images[currentIndex]} style={{ width: '100%' }} alt="Main" />
-        <p className='overlay-text'>
-          {Title}
-        </p>
-        <hr className='overlay-horizon'/>
-        <button className='overlay-button-left' onClick={() => setCurrentIndex((currentIndex - 1 + images.length) % images.length)}>&lt;</button>
-        <button className='overlay-button-right' onClick={goToNextSlide}>&gt;</button>
-        <div>
-          <h1>FASHION</h1>
-          <img src={mainIntroduce} alt='메인 소개이미지' style={{maxWidth : '100%'}} />
-          <span></span>
-        </div>
-      </div>
+    <div className='main-container'>
+    <div style={{ position: 'relative', width: 'auto' , height:'730px'}}>
+     
+      <SectionsContainer {...options}>
+        <Section>
+          <img src={img1} style={{width:'480px',height:'750px'}}/>
+          </Section>
+        <Section>
+          <img src={img2} style={{width:'480px'}}/>
+        </Section>
+        <Section><img src={img3} style={{width:'480px'}}/></Section>
+     </SectionsContainer>
     </div>
-  );
+    </div>
+  )
 }
 
-export default Main;
+export default Main

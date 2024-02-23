@@ -1,39 +1,39 @@
 @font-face {
-    font-family: 'Pretendard-Medium';
-    src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Pretendard-Bold';
-    src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
-  }
-  
+  font-family: 'Pretendard-Medium';
+  src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+}
+
 .post-container {
-    padding: 5px;
-    font-family: 'Pretendard-Bold';
+  padding: 5px;
+  font-family: 'Pretendard-Bold';
 }
 
 .input-container p {
-    margin-bottom: 8px; 
-  }
+  margin-bottom: 8px; 
+}
 .input-container input{
-    width: 450px;
-    margin-bottom: 10px;
+  width: 450px;
+  margin-bottom: 10px;
 }
 .input-container button{
-    width: 90px;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    margin-left: 190px;
-    background-color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    color: white;
+  width: 90px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-left: 190px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  color: white;
 }
 
 .post-container p {
-  font-size: 17px;
-  font-family: Pretendard-Medium;
+font-size: 17px;
+font-family: Pretendard-Medium;
 }
 

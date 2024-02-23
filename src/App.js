@@ -13,7 +13,6 @@ import Codi from './components/Codi';
 import CodiDetail from './components/CodiDetail';
 import Community from './components/Community';
 import Post from './components/Post';
-import PostDetail from './components/PostDetail';
 import Mypage from './components/Mypage';
 import Admin from './components/Admin';
 import ProfileEditor from './components/ProfileEditor';
@@ -44,7 +43,9 @@ function App() {
   const [sortClk, setSortClk] = useState(false);
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState(false);
-
+  const [type, setType] = useState("");
+  const [gender, setGender] = useState("");
+  const [changeType, setChangeType] = useState("");
   useEffect(()=>{
 
     console.log('현재 프엔 세션', sessionStorage.getItem('user'))
@@ -72,7 +73,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
-     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort, search, setSearch}}>
+     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort, search, setSearch, type, setType, gender, setGender, changeType, setChangeType}}>
     <div className="App">
       <Header/>
       <hr/>
@@ -86,7 +87,6 @@ function App() {
         <Route path='CodiDetail' element={<CodiDetail/>}/>
         <Route path="community" element={<Community/>}/>
         <Route path='post' element={<Post/>}/>
-        <Route path='postDetail' element={<PostDetail/>}/>
         <Route path='myPage' element={<Mypage/>}/>
         <Route path='admin' element={<Admin/>}/>
         <Route path='profileEditor' element={<ProfileEditor/>}/>

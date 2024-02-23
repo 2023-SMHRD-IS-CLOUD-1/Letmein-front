@@ -18,6 +18,7 @@ import img from '../images/type.png'
 import { FaQuestionCircle } from "react-icons/fa";
 import size from '../images/size.png'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 // 체형 조절 -> 아바타 생성
 
 const Type = () => {
@@ -33,6 +34,8 @@ const Type = () => {
   // 하의 사이즈
   const [pant,setPant] = useState(24);
 
+  const nav = useNavigate();
+
   const infoHandler = () => {
     setInfo(!info)
   }
@@ -45,7 +48,7 @@ const Type = () => {
  
   return (
       <div className='type-container'>
-        <img src={img} style={{width:'100%', marginBottom:'20px'}}></img>
+        <img src={img} style={{width:'440px',height:'auto', marginBottom:'20px'}}></img>
           {!info ? 
         < FaQuestionCircle onClick={infoHandler} style={{marginLeft:'380px', fontSize : '40px' , color : "#787878"}}/>
           :
@@ -64,7 +67,7 @@ const Type = () => {
         sx={{fontFamily:'Pretendard-Bold'}}
         >
         <div>
-        <FormControlLabel value="female" control={<Radio sx={{color: '#79746C'}}/>} label="녀" />
+        <FormControlLabel value="female" control={<Radio sx={{color: '#79746C'}}/>} label="여" />
         <FormControlLabel value="male" control={<Radio sx={{color: '#79746C', fontFamily:'Pretendard-Bold'}}/>} label="남" />
         </div>
       </RadioGroup>
@@ -101,7 +104,7 @@ const Type = () => {
         max={42}
       />
     </Box>
-    {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}}>아바타 생성</button> : <TypeInfo/>}
+    {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}} >아바타 생성</button> : <TypeInfo/>}
     </div>
     </div>
   )

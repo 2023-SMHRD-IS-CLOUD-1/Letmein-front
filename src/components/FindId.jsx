@@ -6,6 +6,7 @@ import { useState } from 'react';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import { useEffect } from 'react';
 import axios from 'axios';
+import id from '../images/id.png';
 // 아이디찾기
 const FindId = () => {
 
@@ -36,6 +37,7 @@ const FindId = () => {
 
   return (
         <div className='find-container'>
+          <img src={id} style={{width:'460px', height:'auto'}}></img>
       <Box sx={{ display: 'flex', alignItems: 'flex-end', marginBottom:'20px' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="이름을 입력해주세요" variant="standard" 

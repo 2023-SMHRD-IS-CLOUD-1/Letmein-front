@@ -22,7 +22,7 @@ import axios from 'axios';
 import '../css/community.css'
 
 const CommunityDetail = () => {
-    const {user_id} =useContext(UserContext);
+    const {user_id,del, setDel} =useContext(UserContext);
     const location = useLocation();
     const item = location.state.item;
     const nav = useNavigate();
@@ -56,7 +56,7 @@ const CommunityDetail = () => {
         })
     }, [item]);
     useEffect(()=>{
-        axios.post("/letmein/countLike",{
+        axios.post("/countLike",{
             post_num : num
         }).then((res)=>{
             setCntLike(res.data);
@@ -108,9 +108,10 @@ const CommunityDetail = () => {
             })
         }
     }
-
+    // back
     const handleIconClick = () => {
         nav("/community")
+        setDel(true);
     }
     // 글 수정
     const updateHandler = () => {

@@ -12,6 +12,8 @@
 .id-container{
   width: auto;
   font-family: Pretendard-Medium;
+  margin-bottom: 200px;
+  min-height: 700px;
 }
 .center-input{
   margin-top: 50px;
@@ -60,6 +62,7 @@
   margin-top: 20px;
     text-align: center;
     font-family: Pretendard-Bold;
+    min-height: 700px;
 }
 .user-container span{
     margin-right: 15px;
@@ -94,6 +97,7 @@ margin-bottom: 20px;
 
 .join-container {
   font-family: Pretendard-Medium;
+  min-height: 700px;
 }
 .join-container button{
   background-color: black;
@@ -136,6 +140,8 @@ margin-bottom: 20px;
 .find-container {
   text-align: center;
   font-family: Pretendard-Medium;
+  min-height: 700px;
+  padding: 20px;
 }
 
 

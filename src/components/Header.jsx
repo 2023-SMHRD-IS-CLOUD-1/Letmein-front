@@ -8,8 +8,7 @@ import { UserContext } from '../context/UserContext';
 import FadeMenu from './FadeMenu';
 
 const Header = () => {
-  const {user_id,setId,login, setLogin} = useContext(UserContext);
-  
+  const {user_id,setId,login, setLogin, del, setDel} = useContext(UserContext);
   const nav = useNavigate();
   const Logout = () => {
     setLogin(false);
@@ -17,9 +16,9 @@ const Header = () => {
   }
     return (
       <div className='header-container'>
-        <img src={logo} alt="Logo" style={{ width: '160px', cursor: 'pointer'}} onClick={()=>nav("/")}/>
+        <img src={logo} alt="Logo" style={{ width: '150px',height:'60px', cursor: 'pointer'}} onClick={()=>{nav("/"); setDel("true")}}/>
         <div className="navigation-links">
-          <Link to="/community" style={{ marginTop:'12px' ,fontSize:'20px'}}  > 커뮤니티</Link>
+          <Link to="/community" style={{ marginTop:'11px' ,fontSize:'20px'}}  > 커뮤니티</Link>
           <FadeMenu/>
         </div>
         <div className="user-links">

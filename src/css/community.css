@@ -8,8 +8,6 @@
   font-family: 'Pretendard-Bold';
   src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
 }
-
-
 .search-container{
   font-family: 'Pretendard-Bold';
   display: flex;
@@ -131,8 +129,13 @@ element.style {
   border-radius: 5px;
   color: white;
   margin: 5px;
+  font-family: 'Pretendard-Medium';
+  font-size: 18px; 
 }
-
+.update-container p {
+  font-family: 'Pretendard-Medium';
+  font-size: 18px; 
+}
 .faq-container {
   padding: 10px;
 }

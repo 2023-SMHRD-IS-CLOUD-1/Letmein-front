@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../css/post.css'
 import Img from '../images/postimg.png'
 import { UserContext } from '../context/UserContext'
@@ -18,11 +18,18 @@ const Post = () => {
   const [top, setTop] = useState("");
   const [pants, setPants] = useState("");
   const [shoe, setShoe] = useState("");
-
+  const [date, setDate] = useState("");
   // 이미지 업로드
   const [imgFile, setImgFile] = useState("");
   const [img, setImg] = useState("");
   const imgRef = useRef();
+
+  // 날짜 저장
+  useEffect(()=>{
+    const today = new Date();
+    const formattedDate = today.toLocaleString('ko-KR').replace(/. /g, '-').replace(/:/g, '-');
+    setDate(formattedDate)
+  },[])
 
   const saveImgFile = () => {
     const file = imgRef.current.files[0];
@@ -33,13 +40,14 @@ const Post = () => {
       setImg(file);
     };
   };
-
+  
   const handleSubmit = () => {
     if (!imgFile) {
       alert('파일을 선택해주세요');
       return;
     }
-    
+   
+    // aws 이미지 업로드
     AWS.config.update({
       accessKeyId: process.env.REACT_APP_CLIENT_ID,
       secretAccessKey: process.env.REACT_APP_SECRET,
@@ -49,7 +57,7 @@ const Post = () => {
 
     const uploadParams = {
       Bucket: 'letmein0229',
-      Key: imgRef.current.files[0].name,
+      Key: `folder/${user_id}${date}/${imgRef.current.files[0].name}`,
       Body: img
     };
 
@@ -58,7 +66,7 @@ const Post = () => {
         console.error(err);
       } else {
         console.log(data);
-
+        // boot -> db에 저장 
         axios.post("/post", {
           post_title: title,
           post_content: content,
@@ -67,7 +75,7 @@ const Post = () => {
           post_pants: pants,
           post_shoe: shoe,
           user_id: user_id,
-          post_imgsrc: `https://d1nypumamskciu.cloudfront.net/${imgRef.current.files[0].name}`
+          post_imgsrc: `https://d1nypumamskciu.cloudfront.net/folder/${user_id}${date}/${imgRef.current.files[0].name}`
         }).then((res) => {
           console.log(res);
           nav("/community")

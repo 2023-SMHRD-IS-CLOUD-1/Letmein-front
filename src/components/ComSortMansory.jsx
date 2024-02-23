@@ -48,7 +48,6 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
         .then((res)=>{
           if(res.data.length == 0){
             setErr(true);
-            setDel(true);
           }else if (res.data.length>0){
             setErr(false);
             const imgSrcArray = res.data.map(item => item);
@@ -67,7 +66,6 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
         .then((res)=>{
           if(res.data.length == 0){
             setErr(true)
-            setDel(true);
           }else if(res.data.length>0){
             console.log(res.data)
             setErr(false);
@@ -116,7 +114,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
                     </div>
                     ))}
                 </Masonry>
-                <div ref={ref}>끝</div>
+                <div ref={ref}></div>
                 <button onClick={goToTop}>
                 <IoTriangle style={{color:"white"}}/>
                 </button>

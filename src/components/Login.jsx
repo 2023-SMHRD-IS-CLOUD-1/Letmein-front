@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext';
 import axios from 'axios'
 import { Box, FormControl, Input, InputLabel, InputAdornment, TextField } from '@mui/material';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import id from '../images/id.png';
 const Login = () => {
   const nav = useNavigate();
   const {user_id,setId,user_pw,setPw, login, setLogin} = useContext(UserContext);
@@ -44,6 +45,7 @@ const Login = () => {
   return (
     <div className='id-container'>
       <div className='center-input'> 
+      <img src={id} style={{width:'460px', height:'auto'}}></img>
       <Box sx={{ display: 'flex', alignItems: 'flex-end', fontFamily:'Pretendard-Medium' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="아이디를 입력해주세요" variant="standard" 

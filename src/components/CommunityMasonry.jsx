@@ -21,13 +21,12 @@ const CommunityMasonry = ({searchKey, search}) => {
 
   // 검색
   useEffect(()=>{
-      if(searchKey!=""){
+      if(searchKey!="" ){
         if(search === 'writer'){
           searchWriter();
         }else if(search === 'title'){
           searchTitle();
         }
-     
   }
 },[search, searchKey])
 
@@ -37,13 +36,13 @@ useEffect(() => {
     ImgFethch();
   }
 }, [inView, del]);
+
 // 작성자 기준 검색
 const searchWriter = () => {
-  axios.get(`/searchWriter?userId=${searchKey}&page=0`)
+  axios.get(`/searchWriter?userId=${searchKey}`)
   .then((res)=>{
     if(res.data.length == 0){
       setErr(true)
-      setDel(true);
     }else if(res.data.length>0){
       setErr(false);
       const imgSrcArray = res.data.map(item => item);
@@ -56,11 +55,10 @@ const searchWriter = () => {
   }
   // 제목 기준 검색
   const searchTitle = () =>{
-    axios.get(`/searchTitle?postTitle=${searchKey}&page=0`)
+    axios.get(`/searchTitle?postTitle=${searchKey}`)
     .then((res)=>{
       if(res.data.length == 0){
         setErr(true);
-        setDel(true);
       }else if (res.data.length>0){
         console.log("제목", res.data)
         setErr(false);
@@ -78,12 +76,13 @@ const searchWriter = () => {
         setErr(false)
         axios(`/selectAll?page=${page}&size=6`)
         .then((res) => {
+          console.log(res.data)
           setList("");
           setHow(false);
           setPostList([...postList, ...res.data]);
           setPage((page)=>page+1)
         }).catch((error) => {
-          console.error(error);
+          console.error("전체사진 에러",error);
         });
       }
     }

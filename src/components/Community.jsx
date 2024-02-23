@@ -23,22 +23,23 @@ const Community = () => {
     const [searchKey , setSearchKey] = useState(""); 
     const [search, setSearch] = useState('writer'); 
     const searchRef = useRef(null);
-    const {del, setDel, sortClk, setSortClk , sort, setSort} = useContext(UserContext);
-    console.log("sortClk",sortClk);
-    console.log("sort", sort)
+    const {del, setDel, sortClk, setSortClk , sort, setSort ,user_id} = useContext(UserContext);
+    const [msg, setMsg] = useState("");
     const handleChange = (event) => {
       setSearch(event.target.value);
     };
-  
+    // 검색
     const searchHandler = () =>{
         setSearchKey(searchRef.current.value);
         setDel(!del)
     }
-
+    // 검색 취소
     const deleteHandler = () =>{
         setDel(!del)
         searchRef.current.value = '';
     }
+
+    // 정렬
     const sortHandler = (event) => {
       setSort(event.target.value)
       if(event.target.value === 'like'){
@@ -49,7 +50,24 @@ const Community = () => {
       
     }
 
+    useEffect(()=>{
+      console.log(sort)
+      if(sort==="like"){
+        setMsg("인기순")
+      } else if(sort === "recent"){
+        setMsg("최신순")
+      }
+    },[sort])
    
+    const postHandler = () => {
+      if(user_id == ""){
+        alert("로그인 후 작성하실 수 있습니다.")
+        nav("/login")
+      } else{
+        nav("/post")
+      }
+    }
+
   return (
     <div className='community-container'>
       <div className='search-container'>
@@ -107,24 +125,23 @@ const Community = () => {
               sx={{fontFamily:'Pretendard-Medium'}}
               onChange={sortHandler}
             >
-
               {sort === 'like' ?
               <>
-              <option value={'recent'} >최신순</option>
-              <option value={'like'}>인기순</option>
+              <option value={sort=="like" ? "recent" : "like"} >{sort == 'like' ? "인기순" : "최신순"}</option>
+              <option value={sort == "like" ? "recent" : "like"}>{sort == 'like' ? "최신순" : "인기순"}</option>
               </>
-              :
-              <>
-              <option value={'recent'}>최신순</option>
-              <option value={'like'}>인기순</option>
+              :<>
+                <option value={sort=="recent" ? "like" : "recent"} >{sort == 'recent' ? "인기순" : "최신순"}</option>
+              <option value={sort == "recent" ? "recent" : "like"}>{sort == 'recent' ? "최신순" : "인기순"}</option>
               </>
               }
 
-             
+              
+            
             </NativeSelect>
           </FormControl>
         </Box>
-          <button onClick={() => nav("/post")}>➕</button>
+          <button onClick={postHandler}>➕</button>
         </div>
         
         {sortClk ? <ComSortMansory sort={sort} search={search} searchKey={searchKey}/> : 

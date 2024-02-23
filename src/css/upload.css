@@ -116,3 +116,7 @@
     text-align: center;
     border-radius : 20px;
   }
+
+  .upload-container {
+    min-height: 720px;
+  }
