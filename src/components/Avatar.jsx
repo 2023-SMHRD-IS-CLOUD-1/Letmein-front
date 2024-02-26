@@ -15,27 +15,36 @@ import Codi from './Codi'
 // **아바타 페이지**
 const Avatar = () => {
 const [imgWid , setImgWid] = useState(false)
-const {gender, setGender , type, setType, clickedImageSrc, setClickedImageSrc} = useContext(UserContext);
+const {gender, setGender , type, setType, clickedImageSrc, setClickedImageSrc, codi, setCodi, codiImgSrc, setCodiImgSrc} = useContext(UserContext);
 const [ava, setAva] = useState([]);
 const [change, setChange] = useState("");
+const [mainAvatar, setMainAvatar] = useState("")
+// 메인 이미지 크기 조절
 const imgHandler = () => {
   setImgWid(!imgWid);
 }
 const [avaFilter, setAvaFilter] = useState("");
 const [filter, setFilter] = useState(false)
 const [clk, setClk] = useState(false)
+useEffect(()=>{
+  setGender("1")
+  setType("역삼각형")
+},[])
 // 아바타 불러오기 
   useEffect(()=> {
-   axios.post("/avatar",{
+   axios.post("http://3.36.68.187:8090/letmein/avatar",{
     avatar_gender : gender
    }).then((res)=>{
     setAva(res.data)
-    console.log(res.data)
+    const main = res.data.filter(item => item.avatar_type == type)
+    setMainAvatar(main[0].avatar_imgsrc)
+    console.log("avatar", mainAvatar)
    }).catch((err)=>{
      console.error(err)
    })
   },[gender])
 
+ 
   // 슬라이드 세팅 
   const settings = {
     dots: true, 
@@ -96,7 +105,12 @@ const avatarFilter = (value) => {
     <div className='avatar-container'>
       <div className='avatar-codi'> 
       {/* 메인 아바타 사진 */}
-      <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={clk ? clickedImageSrc :model} onClick={imgHandler}></img>
+      {!codi ? 
+      <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={clk ? clickedImageSrc : mainAvatar} onClick={imgHandler}></img>
+      :
+      // 코디 + 아바타 이미지
+      <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={codiImgSrc}></img>
+      }
       {!imgWid ?
       <>
       <div className='avatar-info'>

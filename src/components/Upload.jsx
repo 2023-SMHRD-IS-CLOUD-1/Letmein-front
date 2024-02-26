@@ -37,16 +37,37 @@ const  Upload  = () => {
       alert('파일을 선택해주세요');
       return;
     } else{
-      const formData = new FormData();
-      formData.append('img',img);
-      axios.post("",formData)
-      .then((res)=>{
-        setType(res.type)
-        setGender(res.gender)
-        setSuc(true)
+      AWS.config.update({
+        accessKeyId: process.env.REACT_APP_CLIENT_ID,
+        secretAccessKey: process.env.REACT_APP_SECRET,
+        region: 'us-east-2'
+      });
+      const s3 = new AWS.S3();
+  
+      const uploadParams = {
+        Bucket: 'letmein0229',
+        Key: "letmeinletmein.jpg",
+        Body: img
+      };
+  
+      s3.upload(uploadParams, (err, data) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(data);
+          // boot -> db에 저장 
+          axios.post("http://54.90.29.98:5000/upload", {
+            img : "letmeinletmein.jpg"
+          }).then((res) => {
+            console.log(res);
+          setType(res.type)
+          setGender(res.gender)
+          setSuc(true)
       }).catch((err)=>{
         console.error('분석에러',err)
       })
+      }
+      });
     }
   
   }

@@ -14,7 +14,7 @@ const Codi = () => {
 
   const [top, setTop] = useState([]);
   const [codiImgsrc, setCodiImgsrc] = useState("")
-  const {type, setType, gender , setGender, changeType, setChangeType, clickedImageSrc} = useContext(UserContext);
+  const {type, setType, gender , setGender, changeType, setChangeType, clickedImageSrc, codi, setCodi, codiImgSrc, setCodiImgSrc} = useContext(UserContext);
   useEffect(()=>{
     // 상의 가져오기
     axios.post("/codiTop",{
@@ -48,8 +48,17 @@ const Codi = () => {
 
   // 여기에 파이썬 연결코드 짜기!!!!!!!!!!
  useEffect(()=>{
-    console.log("의상선택",codiImgsrc)
-    console.log("아바타선택",clickedImageSrc)
+    axios.post("hettps://54.90.29.98:5000/avatar",{
+      codi : codiImgsrc,
+      avatar : clickedImageSrc
+    }).then((res)=>{
+      setCodi(true);
+      // 데이터 받아서 변경하기
+      setCodiImgSrc("");
+    }).catch((err)=>{
+      console.error(err)
+    }
+    )
  },[codiImgsrc])
 
  // 슬라이더 설정
