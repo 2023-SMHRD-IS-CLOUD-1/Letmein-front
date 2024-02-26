@@ -18,6 +18,7 @@ import ComSort from './ComSort';
 import ComSortMansory from './ComSortMansory';
 import '../fonts/Pretendard-Medium.ttf'
 
+// 커뮤니티 메인 페이지
 const Community = () => {
     const nav = useNavigate();
     const [searchKey , setSearchKey] = useState(""); 
@@ -59,6 +60,7 @@ const Community = () => {
       }
     },[sort])
    
+    // 글 작성
     const postHandler = () => {
       if(user_id == ""){
         alert("로그인 후 작성하실 수 있습니다.")

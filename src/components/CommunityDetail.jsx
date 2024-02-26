@@ -21,6 +21,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import axios from 'axios';
 import '../css/community.css'
 
+// 글 상세보기 페이지
 const CommunityDetail = () => {
     const {user_id,del, setDel} =useContext(UserContext);
     const location = useLocation();
@@ -47,7 +48,7 @@ const CommunityDetail = () => {
         }
         setNum(item.postNum)
         // 글 작성자의 닉네임 조회
-        axios.post("/nickFind",{
+        axios.post("http://3.36.68.187:8090/letmein/nickFind",{
             user_id : item.userId
         }).then((res)=>{
             setNick(res.data[0].user_nick);
@@ -56,7 +57,8 @@ const CommunityDetail = () => {
         })
     }, [item]);
     useEffect(()=>{
-        axios.post("/countLike",{
+        // 좋아요수 세기
+        axios.post("http://3.36.68.187:8090/letmein/countLike",{
             post_num : num
         }).then((res)=>{
             setCntLike(res.data);
@@ -64,7 +66,8 @@ const CommunityDetail = () => {
             console.error(error)
         })
         
-        axios.post("/countUser",{
+        axios.post("http://3.36.68.187:8090/letmein/countUser",{
+            // 로그인한 유저가 좋아요 누른 글인지 체크
             user_id : user_id
         }).then((res)=>{
             if(res.data.includes(num)){
@@ -120,7 +123,7 @@ const CommunityDetail = () => {
     }
     // 글 삭제
     const deleteHandler = () => {
-        axios.post("/postDelete",{
+        axios.post("http://3.36.68.187:8090/letmein/postDelete",{
             post_num : num,
         }).then((res)=>{
             alert("게시글이 삭제되었습니다")

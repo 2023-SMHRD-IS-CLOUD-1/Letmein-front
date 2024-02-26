@@ -8,6 +8,7 @@ import { IoTriangle } from "react-icons/io5";
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import ComSort from './ComSort';
+
 // 인기글 정렬 컴포넌트
 const ComSortMansory = ({ searchKey, search, sort }) => {
 
@@ -42,7 +43,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
     },[del])
     // 제목기준 검색
     const searchTitle = () =>{
-        axios.post(`/sortTitle`,{
+        axios.post(`http://3.36.68.187:8090/letmein/sortTitle`,{
             post_title : searchKey
         })
         .then((res)=>{
@@ -60,7 +61,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
       }
       // 작성자 기준 검색
       const searchWriter = () => {
-        axios.post(`/sortWriter`,{
+        axios.post(`http://3.36.68.187:8090/letmein/sortWriter`,{
             user_id : searchKey
         })
         .then((res)=>{
@@ -80,7 +81,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
         // 전체글 인기정렬
         const sortLike = () => {
             if(del){
-                axios.get(`/sortLike`)
+                axios.get("http://3.36.68.187:8090/letmein/sortLike")
                     .then((res) => {
                         setList("");
                         setHow(false);

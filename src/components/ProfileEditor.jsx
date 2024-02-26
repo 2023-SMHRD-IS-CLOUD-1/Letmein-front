@@ -15,7 +15,7 @@ const ProfileEditor = () => {
   const [email, setEmail] = useState("");
   const [nick, setNick] = useState("");
   useEffect(() => {
-    axios.post("http://localhost:8090/letmein/login",{
+    axios.post("http://3.36.68.187:8090/letmein/login",{
       user_id : user_id
     })
     .then((res)=>{

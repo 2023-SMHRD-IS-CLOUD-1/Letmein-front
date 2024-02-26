@@ -35,7 +35,7 @@ import { create } from '@mui/material/styles/createTransitions';
         const [data, setData] = useState(false)
         useEffect(() => {
           if (value === 'QUESTION') {
-            axios.post("/customerAll", {
+            axios.post("http://3.36.68.187:8090/letmein/customerAll", {
               user_id: user_id
             })
               .then((res) => {
@@ -86,8 +86,10 @@ import { create } from '@mui/material/styles/createTransitions';
               <img src={customerImage} style={{width:'480px'}}></img>
         {value === "FAQ"  ? (
           <div className='faq'>
-            <p className='question'>Q1. 체형 사진을 업로드하면 어떻게 체형을 분석하나요? 어저구 저저구</p>
-            <p className='answer'>A. yolo를 이용해 체형을 분석해 아바타를 제작합니다</p>
+            <p className='question'>Q1. 이미지를 업로드하면 내 사진이 저장이 되나요??</p>
+            <p className='answer'>A. 사용자가 업로드 한 이미지는 체형분석 후 저장되지 않으니 걱정하지 않으셔도 됩니다.</p>
+            <p className='question'>Q2. 체형은 어떤 방식을 통해 분석 되는건가요??</p>
+            <p className='answer'>A. 사용자가 업로드 한 이미지의 어깨너비와 허리너비의 비율에 따라 사용자의 체형을 판별합니다.</p>
           </div>
         ) : ""}
         {value === "QUESTION" && ! data ?  

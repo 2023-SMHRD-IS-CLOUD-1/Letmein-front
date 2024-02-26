@@ -9,6 +9,8 @@ import manage  from '../images/manage.png'
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+
+// 고객센터 -> 문의글 상세보기 페이지
 const CustomerDetail = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -17,6 +19,8 @@ const CustomerDetail = () => {
   const nav = useNavigate();
   const {user_id} = useContext(UserContext);
 
+
+  // 되돌아가기
   const goBack = () => {
   if(user_id === 'ADMIN'){
     nav("/admin")
@@ -25,9 +29,9 @@ const CustomerDetail = () => {
   }
   }
   
-
+// 문의글 작성
 useEffect(()=>{
-    axios.post("/customerNum",{
+    axios.post("http://3.36.68.187:8090/letmein/customerNum",{
         help_num : num
     }).then((res)=>{
         setPost(res.data[0])
@@ -36,7 +40,7 @@ useEffect(()=>{
 },[num])
 // 답변 제출
   const submitHandler = () => {
-    axios.post("/helpAnswer",{
+    axios.post("http://3.36.68.187:8090/letmein/helpAnswer",{
       help_answer_content : content,
       help_num : num
     }).then((res)=>{

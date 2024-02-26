@@ -35,7 +35,7 @@ const Join = () => {
   
   // 회원가입
   const handleJoin = () => {
-    axios.post("/join", {
+    axios.post("http://3.36.68.187:8090/letmein/join", {
       user_id: user_id,
       user_pw: user_pw,
       user_email: user_email,

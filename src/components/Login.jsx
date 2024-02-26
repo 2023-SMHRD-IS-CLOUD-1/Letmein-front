@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <div className='id-container'>
       <div className='center-input'> 
-      <img src={id} style={{width:'460px', height:'auto'}}></img>
+      <img src={id} style={{width:'460px', height:'auto', marginBottom:'20px'}}></img>
       <Box sx={{ display: 'flex', alignItems: 'flex-end', fontFamily:'Pretendard-Medium' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="아이디를 입력해주세요" variant="standard" 

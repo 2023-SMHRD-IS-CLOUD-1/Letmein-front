@@ -10,7 +10,6 @@ import Join from './components/Join';
 import FindId from './components/FindId';
 import Avatar from './components/Avatar';
 import Codi from './components/Codi';
-import CodiDetail from './components/CodiDetail';
 import Community from './components/Community';
 import Post from './components/Post';
 import Mypage from './components/Mypage';
@@ -46,12 +45,13 @@ function App() {
   const [type, setType] = useState("");
   const [gender, setGender] = useState("");
   const [changeType, setChangeType] = useState("");
+  const [clickedImageSrc, setClickedImageSrc] = useState('');
   useEffect(()=>{
 
     console.log('현재 프엔 세션', sessionStorage.getItem('user'))
     Modal.setAppElement("#root");
     const fetchUser = async () => {
-      axios.post("http://localhost:8090/letmein/login",{
+      axios.post("http://3.36.68.187:8090/letmein/login",{
         user_id : sessionStorage.getItem('user'),
       })
       .then((res) => {
@@ -73,7 +73,9 @@ function App() {
 
   return (
     <UserContext.Provider value={{user_id, setId, user_pw, setPw, user_email, setEmail, user_name, setName, user_nick, setNick, login, setLogin
-     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort, search, setSearch, type, setType, gender, setGender, changeType, setChangeType}}>
+     ,searchKey , setSearchKey , del, setDel,sortClk , setSortClk , sort , setSort, search, setSearch, type, setType, gender, setGender, changeType, setChangeType
+     ,clickedImageSrc, setClickedImageSrc
+     }}>
     <div className="App">
       <Header/>
       <hr/>
@@ -84,7 +86,6 @@ function App() {
         <Route path='findId' element={<FindId/>}/>
         <Route path='avatar' element={<Avatar/>}/>
         <Route path='codi' element={<Codi/>}/>
-        <Route path='CodiDetail' element={<CodiDetail/>}/>
         <Route path="community" element={<Community/>}/>
         <Route path='post' element={<Post/>}/>
         <Route path='myPage' element={<Mypage/>}/>

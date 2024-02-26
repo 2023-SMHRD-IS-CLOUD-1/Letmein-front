@@ -30,9 +30,6 @@ const  Upload  = () => {
       setImg(file);
     };
   };
-  useEffect(()=>{
-    setSuc(true)
-  },[])
 
 // 이미지 업로드 후 분석 실행 
   const GoAvatar = () => {
@@ -46,6 +43,7 @@ const  Upload  = () => {
       .then((res)=>{
         setType(res.type)
         setGender(res.gender)
+        setSuc(true)
       }).catch((err)=>{
         console.error('분석에러',err)
       })

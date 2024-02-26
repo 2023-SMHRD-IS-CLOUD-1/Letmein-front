@@ -5,7 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 const ContactCustomer = () => {
-
+// 고객센터 페이지 메인
     const [value, setValue] = React.useState('FAQ');
 
     const handleChange = (event, newValue) => {

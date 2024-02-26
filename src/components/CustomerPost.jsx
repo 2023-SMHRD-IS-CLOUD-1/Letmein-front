@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
+// 문의글 작성
 const CustomerPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -13,7 +13,7 @@ const CustomerPost = () => {
     const nav = useNavigate();
 
     const submitHandler = () => {
-        axios.post("/customerPost",{
+        axios.post("http://3.36.68.187:8090/letmein/customerPost",{
             help_title : title,
             help_content : content,
             user_id : user_id

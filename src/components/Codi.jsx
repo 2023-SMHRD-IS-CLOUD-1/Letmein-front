@@ -13,9 +13,10 @@ import '../css/codi.css'
 const Codi = () => {
 
   const [top, setTop] = useState([]);
-  const {type, setType, gender , setGender, changeType, setChangeType} = useContext(UserContext);
+  const [codiImgsrc, setCodiImgsrc] = useState("")
+  const {type, setType, gender , setGender, changeType, setChangeType, clickedImageSrc} = useContext(UserContext);
   useEffect(()=>{
-    // 상의
+    // 상의 가져오기
     axios.post("/codiTop",{
       codi_gender : gender
     })
@@ -45,8 +46,13 @@ const Codi = () => {
     })
   },[type, gender])
 
+  // 여기에 파이썬 연결코드 짜기!!!!!!!!!!
+ useEffect(()=>{
+    console.log("의상선택",codiImgsrc)
+    console.log("아바타선택",clickedImageSrc)
+ },[codiImgsrc])
 
-
+ // 슬라이더 설정
   const settings = {
     dots: true, 
     infinite: true,
@@ -55,17 +61,24 @@ const Codi = () => {
     slidesToScroll: 4,
   };
   
-
   return (
     <div className='codi-container'>
       <div className='top-container'>
       <Slider {...settings}>
-      {top.map((item, index)=>
-      <div key={index} >
-        <img style={{width:'150px' , height:'150px' }} src={`https://d1nypumamskciu.cloudfront.net/cloth/${item.codi_imgsrc}`} alt={`Slide ${index+1}`} ></img>
-      </div>
-      )}
-      </Slider>
+      {top.map((item, index) => (
+        <div key={index}>
+          <img
+            style={{ width: '150px', height: '150px' }}
+            src={`https://d1nypumamskciu.cloudfront.net/cloth/${item.codi_imgsrc}`}
+            alt={`Slide ${index + 1}`}
+            onClick={() => {
+              setCodiImgsrc(item.codi_imgsrc);
+            }}
+      />
+    </div>
+  ))}
+</Slider>
+
     </div>
     
     </div>

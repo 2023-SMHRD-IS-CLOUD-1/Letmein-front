@@ -10,9 +10,12 @@ import "slick-carousel/slick/slick-theme.css";
 import '../css/codi.css'
 import model from '../images/model.jpg'
 import Codi from './Codi'
+
+
+// **아바타 페이지**
 const Avatar = () => {
 const [imgWid , setImgWid] = useState(false)
-const {gender, setGender , type, setType} = useContext(UserContext);
+const {gender, setGender , type, setType, clickedImageSrc, setClickedImageSrc} = useContext(UserContext);
 const [ava, setAva] = useState([]);
 const [change, setChange] = useState("");
 const imgHandler = () => {
@@ -20,12 +23,9 @@ const imgHandler = () => {
 }
 const [avaFilter, setAvaFilter] = useState("");
 const [filter, setFilter] = useState(false)
-const [clickedImageSrc, setClickedImageSrc] = useState('');
 const [clk, setClk] = useState(false)
 // 아바타 불러오기 
   useEffect(()=> {
-    setGender("1")
-    setType("삼각형")
    axios.post("/avatar",{
     avatar_gender : gender
    }).then((res)=>{
@@ -36,11 +36,12 @@ const [clk, setClk] = useState(false)
    })
   },[gender])
 
+  // 슬라이드 세팅 
   const settings = {
     dots: true, 
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 3, // 이미지 개수
     slidesToScroll: 4,
   };
 
@@ -64,7 +65,7 @@ const avataHandler = (e) => {
   avatarFilter(e.target.value); // 변경된 값(e.target.value)을 전달하여 필터링
 }
 
-
+// 체형별 아바타 필터
 const avatarFilter = (value) => {
   setFilter(true)
   if(value === "pear"){ // 변경된 값(value)을 조건으로 사용
@@ -89,20 +90,22 @@ const avatarFilter = (value) => {
       setAvaFilter(filteredArray)
       setType(val)
     }
-    
   }
-
 
   return (
     <div className='avatar-container'>
       <div className='avatar-codi'> 
+      {/* 메인 아바타 사진 */}
       <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={clk ? clickedImageSrc :model} onClick={imgHandler}></img>
       {!imgWid ?
       <>
       <div className='avatar-info'>
+        {/* 유저 정보 성별, 타입 */}
       <p style={{fontSize:'20px', marginLeft:'10px'}}>{gender == 0 ? "남" : "여"}</p>
       <p style = {{fontSize:'20px', marginLeft:'10px'}}>{type }</p>
+      <div className='avatar-plus'>
       <div className='avatar-ex'>
+        {/* 체형 설명 글 */}
         {type == "사다리꼴" ?
         <>
          <p style={{fontSize : '17px'}}>
@@ -148,17 +151,17 @@ const avatarFilter = (value) => {
         </>
         :""}    
       </div>
-      
-          
       </div>
-      
+      </div>
       </>
       :""}
       </div>
+
       {imgWid ?
       <>
       <div className='avatars'>
         <p style={{fontSize:'22px'}}>아바타</p>
+        {/* button 클릭시 해당하는 아바타 출력 */}
         <div className='avatar-type'>
           <button value='pear' onClick={avataHandler}>삼각형</button>
           <button value='round'  onClick={avataHandler}>타원형</button>
@@ -166,6 +169,7 @@ const avatarFilter = (value) => {
           <button value='rectangle'  onClick={avataHandler}>직사각형</button>
           <button value='hourglass'  onClick={avataHandler}>{gender == "0"?"사디리꼴형":"모래시계형" }</button>
         </div>
+        {/* 모든 아바타 이미지 슬라이더 */}
           {!filter ?<>
             <Slider {...settings}>
               {ava.map((item, index)=>
@@ -176,6 +180,7 @@ const avatarFilter = (value) => {
               )}
         </Slider>
           </> : <>
+          {/* 체형별 필터링된 아바타 이미지 슬라이더 */}
           {avaFilter.length > 1 ? (
           <Slider {...setting}>
             {avaFilter.map((item, index) => (
@@ -198,7 +203,7 @@ const avatarFilter = (value) => {
               onClick={() => {setClickedImageSrc(avaFilter[0].avatar_imgsrc); setClk(true)}}
             />
           </div>
-)}
+            )}
 
 
           </>}

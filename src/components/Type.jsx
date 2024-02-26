@@ -40,11 +40,6 @@ const Type = () => {
     setInfo(!info)
   }
   
-  useEffect(()=>{
-
-  },[gender ,top, pant])
-
-  
  
   return (
       <div className='type-container'>

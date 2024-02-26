@@ -23,7 +23,7 @@ export default function DataGridDemo() {
 
   const allUser = () => {
     axios
-      .get('/allUser')
+      .get('http://3.36.68.187:8090/letmein/allUser')
       .then((res) => {
         const users = Object.values(res.data).map((item) => ({
           id: item.user_id,
@@ -39,7 +39,7 @@ export default function DataGridDemo() {
 
   const searchHandler = () => {
     axios
-      .post('/UserSearch', {
+      .post('http://3.36.68.187:8090/letmein/UserSearch', {
         user_id: searchKey,
       })
       .then((res) => {
@@ -58,8 +58,9 @@ export default function DataGridDemo() {
   const deleteHandler = () => {
     console.log('실행');
     selectedRows.forEach((rowId) => {
+      console.log(rowId)
       axios
-        .post('/AdminDelete', {
+        .post('http://3.36.68.187:8090/letmein/AdminDelete', {
           user_id: rowId,
         })
         .then((res) => {
@@ -103,7 +104,6 @@ export default function DataGridDemo() {
           checkboxSelection
           onRowSelectionModelChange={(selectionModel)=>{
             setSelectedRows(selectionModel)
-            console.log(selectionModel)
           }}
           disableRowSelectionOnClick
         />

@@ -34,7 +34,7 @@ const ComUpdate = () => {
     },[item])
    
     const handleSubmit  = () => {
-        axios.post("postModify",{
+        axios.post("http://3.36.68.187:8090/letmein/postModify",{
             post_title : title,
             post_content : content,
             post_acc : acc,

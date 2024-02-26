@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import '../fonts/Pretendard-Bold.ttf'
 
+// 최신순 보여주는 컴포넌트
 const CommunityMasonry = ({searchKey, search}) => {
   const [ref, inView] = useInView();
   const [postList, setPostList] = useState([]);
@@ -17,7 +18,7 @@ const CommunityMasonry = ({searchKey, search}) => {
   const [List, setList] = useState([]);
   const [how, setHow] = useState(false);
   const {del, setDel} = useContext(UserContext);
-  // 맨밑 스크롤 감지
+
 
   // 검색
   useEffect(()=>{
@@ -39,7 +40,7 @@ useEffect(() => {
 
 // 작성자 기준 검색
 const searchWriter = () => {
-  axios.get(`/searchWriter?userId=${searchKey}`)
+  axios.get(`http://3.36.68.187:8090/letmein/searchWriter?userId=${searchKey}`)
   .then((res)=>{
     if(res.data.length == 0){
       setErr(true)
@@ -55,7 +56,7 @@ const searchWriter = () => {
   }
   // 제목 기준 검색
   const searchTitle = () =>{
-    axios.get(`/searchTitle?postTitle=${searchKey}`)
+    axios.get(`http://3.36.68.187:8090/letmein/searchTitle?postTitle=${searchKey}`)
     .then((res)=>{
       if(res.data.length == 0){
         setErr(true);
@@ -74,7 +75,7 @@ const searchWriter = () => {
     const ImgFethch = () => {
       if(del){
         setErr(false)
-        axios(`/selectAll?page=${page}&size=6`)
+        axios(`http://3.36.68.187:8090/letmein/selectAll?page=${page}&size=6`)
         .then((res) => {
           console.log(res.data)
           setList("");
@@ -109,7 +110,7 @@ const searchWriter = () => {
         ))}
       </Masonry>
   
-
+          {/*  맨밑 스크롤 감지 */}
       <div ref={ref}>끝</div>
       <button onClick={goToTop}>
         <IoTriangle style={{color:"white"}}/>

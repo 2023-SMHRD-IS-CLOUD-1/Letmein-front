@@ -16,9 +16,11 @@ const Admin = () => {
   return (
     <div className='admin-container'>
       <div className='graph'>
+        {/* 고객 관리 */}
       <h3>User Info</h3>
         <DataGridDemo/>
       </div>
+      {/* 문의글 답변 */}
       <div className='graph'>
         <h3>고객문의함</h3>
         <StickyHeadTable/>
