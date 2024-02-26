@@ -12,7 +12,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const LoginHandler = () =>{
-    axios.post("/login",{
+    axios.post("http://3.36.68.187:8090/letmein/login",{
       user_id : user_id,
       user_pw : user_pw
     })
@@ -25,17 +25,13 @@ const Login = () => {
       }
       else if(res.data.length==0){
         alert("해당하는 아이디가 없습니다")
-      } else if(res.data.length>0){
-        if(res.data[0].user_pw !== user_pw){
-          setErrorMessage("비밀번호가 다릅니다!");
-        }else if(res.data[0].user_pw === user_pw){
+      } else
           setErrorMessage('');
           alert('로그인 성공'); 
           setLogin(true);
-          sessionStorage.setItem('user', res.data[0].user_id)
+          sessionStorage.setItem('user', res.data.user_id)
           nav("/")
-        }
-      }
+      
     })
     .catch((error) => {
       console.error('회원가입 실패', error);
@@ -45,7 +41,7 @@ const Login = () => {
   return (
     <div className='id-container'>
       <div className='center-input'> 
-      <img src={id} style={{width:'460px', height:'auto', marginBottom:'20px'}}></img>
+      <img src={id} style={{width:'460px', height:'auto'}}></img>
       <Box sx={{ display: 'flex', alignItems: 'flex-end', fontFamily:'Pretendard-Medium' }}>
         <PersonRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="아이디를 입력해주세요" variant="standard" 
