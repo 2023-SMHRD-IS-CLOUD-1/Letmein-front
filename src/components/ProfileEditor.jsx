@@ -15,7 +15,7 @@ const ProfileEditor = () => {
   const [email, setEmail] = useState("");
   const [nick, setNick] = useState("");
   useEffect(() => {
-    axios.post("http://3.36.68.187:8090/letmein/login",{
+    axios.post("http://54.180.13.94:8090/letmein/letmein/login",{
       user_id : user_id
     })
     .then((res)=>{
@@ -32,7 +32,7 @@ const ProfileEditor = () => {
  
   // 정보 수정
   const editHandler = () => {
-    axios.post("/profileEditor", {
+    axios.post("http://3.35.116.145:8090/letmein/profileEditor", {
       user_id: user_id,
       user_pw: pw,
       user_name: name,

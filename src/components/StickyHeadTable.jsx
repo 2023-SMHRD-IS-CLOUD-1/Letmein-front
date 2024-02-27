@@ -54,7 +54,7 @@ export default function StickyHeadTable() {
   };
 
   useEffect(()=>{
-    axios.get("http://3.36.68.187:8090/letmein/helpNo").
+    axios.get("http://54.180.13.94:8090/letmein/helpNo").
     then((res)=>{
         console.log(res)
         const newRows = res.data.map((item) => (

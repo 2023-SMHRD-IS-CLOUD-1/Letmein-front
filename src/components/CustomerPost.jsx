@@ -13,7 +13,7 @@ const CustomerPost = () => {
     const nav = useNavigate();
 
     const submitHandler = () => {
-        axios.post("http://3.36.68.187:8090/letmein/customerPost",{
+        axios.post("http://54.180.13.94:8090/letmein/customerPost",{
             help_title : title,
             help_content : content,
             user_id : user_id

@@ -31,7 +31,7 @@ const CustomerDetail = () => {
   
 // 문의글 작성
 useEffect(()=>{
-    axios.post("http://3.36.68.187:8090/letmein/customerNum",{
+    axios.post("http://54.180.13.94:8090/letmein/customerNum",{
         help_num : num
     }).then((res)=>{
         setPost(res.data[0])
@@ -40,7 +40,7 @@ useEffect(()=>{
 },[num])
 // 답변 제출
   const submitHandler = () => {
-    axios.post("http://3.36.68.187:8090/letmein/helpAnswer",{
+    axios.post("http://54.180.13.94:8090/letmein/helpAnswer",{
       help_answer_content : content,
       help_num : num
     }).then((res)=>{

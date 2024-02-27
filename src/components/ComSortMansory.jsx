@@ -43,7 +43,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
     },[del])
     // 제목기준 검색
     const searchTitle = () =>{
-        axios.post(`http://3.36.68.187:8090/letmein/sortTitle`,{
+        axios.post(`http://54.180.13.94:8090/letmein/sortTitle`,{
             post_title : searchKey
         })
         .then((res)=>{
@@ -61,7 +61,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
       }
       // 작성자 기준 검색
       const searchWriter = () => {
-        axios.post(`http://3.36.68.187:8090/letmein/sortWriter`,{
+        axios.post(`http://54.180.13.94:8090/letmein/sortWriter`,{
             user_id : searchKey
         })
         .then((res)=>{
@@ -81,7 +81,7 @@ const ComSortMansory = ({ searchKey, search, sort }) => {
         // 전체글 인기정렬
         const sortLike = () => {
             if(del){
-                axios.get("http://3.36.68.187:8090/letmein/sortLike")
+                axios.get("http://54.180.13.94:8090/letmein/sortLike")
                     .then((res) => {
                         setList("");
                         setHow(false);

@@ -55,7 +55,7 @@ const Detail = () => {
         })
     }, [item]);
     useEffect(()=>{
-        axios.post("http://3.36.68.187:8090/letmein/countLike",{
+        axios.post("http://54.180.13.94:8090/letmein/countLike",{
             post_num : num
         }).then((res)=>{
             setCntLike(res.data);
@@ -63,7 +63,7 @@ const Detail = () => {
             console.error(error)
         })
         
-        axios.post("http://3.36.68.187:8090/letmein/countUser",{
+        axios.post("http://54.180.13.94:8090/letmein/countUser",{
             user_id : user_id
         }).then((res)=>{
             if(res.data.includes(num)){
@@ -80,7 +80,7 @@ const Detail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else if(!like){
-            axios.post("http://3.36.68.187:8090/letmein/like",{
+            axios.post("http://54.180.13.94:8090/letmein/like",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{
@@ -96,7 +96,7 @@ const Detail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else{
-            axios.post("http://3.36.68.187:8090/letmein/unlike",{
+            axios.post("http://54.180.13.94:8090/letmein/unlike",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{
@@ -118,7 +118,7 @@ const Detail = () => {
     }
     // 글 삭제
     const deleteHandler = () => {
-        axios.post("http://3.36.68.187:8090/letmein/postDelete",{
+        axios.post("http://54.180.13.94:8090/letmein/postDelete",{
             post_num : num,
         }).then((res)=>{
             alert("게시글이 삭제되었습니다")

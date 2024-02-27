@@ -23,7 +23,7 @@ export default function DataGridDemo() {
 
   const allUser = () => {
     axios
-      .get('http://3.36.68.187:8090/letmein/allUser')
+      .get('http://54.180.13.94:8090/letmein/allUser')
       .then((res) => {
         const users = Object.values(res.data).map((item) => ({
           id: item.user_id,
@@ -39,7 +39,7 @@ export default function DataGridDemo() {
 
   const searchHandler = () => {
     axios
-      .post('http://3.36.68.187:8090/letmein/UserSearch', {
+      .post('http://54.180.13.94:8090/letmein/UserSearch', {
         user_id: searchKey,
       })
       .then((res) => {
@@ -60,7 +60,7 @@ export default function DataGridDemo() {
     selectedRows.forEach((rowId) => {
       console.log(rowId)
       axios
-        .post('http://3.36.68.187:8090/letmein/AdminDelete', {
+        .post('http://54.180.13.94:8090letmein/AdminDelete', {
           user_id: rowId,
         })
         .then((res) => {

@@ -12,25 +12,13 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const LoginHandler = () =>{
-    axios.post("http://3.36.68.187:8090/letmein/login",{
+    axios.post("http://54.180.13.94:8090/login",{
       user_id : user_id,
       user_pw : user_pw
     })
     .then((res) => {
       console.log(res.data);
-      if(!user_id){
-        alert('아이디를 입력해주세요')
-      }else if(!user_pw){
-        alert('비밀번호를 입력해주세요')
-      }
-      else if(res.data.length==0){
-        alert("해당하는 아이디가 없습니다")
-      } else
-          setErrorMessage('');
-          alert('로그인 성공'); 
-          setLogin(true);
-          sessionStorage.setItem('user', res.data.user_id)
-          nav("/")
+         
       
     })
     .catch((error) => {
@@ -64,7 +52,6 @@ const Login = () => {
       <hr/>
       <div className='user-container'>
         <span onClick={()=>nav("/findId")}>아이디 찾기</span><span>|</span>
-        <span onClick={()=>nav("/findPw")}>비밀번호 찾기</span><span>|</span>
         <span onClick={()=>nav("/join")}>회원가입</span>
       </div>
     </div>

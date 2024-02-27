@@ -16,7 +16,7 @@ const FindId = () => {
   const [errMsg, setErrMsg] = useState("");
   // 이메일 확인
   const chkEmailHandler = () => {
-    axios.post("http://3.36.68.187:8090/letmein/FindEmail",{
+    axios.post("http://54.180.13.94:8090/letmein/FindEmail",{
       user_id : user_id
     }).then((res)=>{
       console.log(res.data)
@@ -32,7 +32,10 @@ const FindId = () => {
   }
   // 이메일 전송
   const EmailHandler = () => {
-
+    axios.post("http://54.90.29.98:5000/email",{
+      email:email,
+      user_id : user_id
+    })
   }
 
   return (

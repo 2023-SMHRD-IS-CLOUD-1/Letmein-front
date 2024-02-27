@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useContext } from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import '../css/upload.css'
@@ -18,6 +18,8 @@ import img from '../images/type.png'
 import { FaQuestionCircle } from "react-icons/fa";
 import size from '../images/size.png'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 // 체형 조절 -> 아바타 생성
 
 const Type = () => {
@@ -27,25 +29,102 @@ const Type = () => {
   const [info, setInfo] = useState(false);
 
   // 성별 
-  const [gender, setGender] = useState('female');
+  const {gender, setGender, type, setType} = useContext(UserContext)
   // 상의 사이즈
   const [top,setTop] = useState(80);
   // 하의 사이즈
   const [pant,setPant] = useState(24);
 
+  const nav = useNavigate();
+
   const infoHandler = () => {
     setInfo(!info)
   }
   
-  useEffect(()=>{
-
-  },[gender ,top, pant])
-
-  
+  const avatarHanlder = () =>{ 
+      if(top == 85 && pant == 29 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 90 && pant == 30 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 95 && pant == 31 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 100 && pant == 33 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 105 && pant == 35 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 110 && pant == 36 && gender== "0"){
+        setType("직사각형")
+      } else if(top == 80 && pant == 24 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 85 && pant == 25 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 90 && pant == 26 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 95 && pant == 27 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 100 && pant == 28 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 105 && pant == 29 && gender== "1"){
+        setType("직사각형")
+      } else if(top == 90 && pant == 29 && gender== "0"){
+        setType("사다리꼴")
+      } else if(top == 95 && pant == 30 && gender== "0"){
+        setType("사다리꼴")
+      } else if(top == 100 && pant == 31 && gender== "0"){
+        setType("사다리꼴")
+      } else if(top == 105 && pant == 33 && gender== "0"){
+        setType("사다리꼴")
+      } else if(top == 110 && pant == 35 && gender== "0"){
+        setType("사다리꼴")
+      } else if(top == 85 && pant == 24 && gender== "1"){
+        setType("사다리꼴")
+      } else if(top == 90 && pant == 25 && gender== "1"){
+        setType("사다리꼴")
+      } else if(top == 95 && pant == 26 && gender== "1"){
+        setType("사다리꼴")
+      } else if(top == 100 && pant == 27 && gender== "1"){
+        setType("사다리꼴")
+      }else if(top == 105 && pant == 28 && gender== "1"){
+        setType("사다리꼴")
+      }else if(top == 85 && pant == 30 && gender== "0"){
+        setType("삼각형")
+      }else if(top == 90 && pant == 31 && gender== "0"){
+        setType("삼각형")
+      }else if(top == 95 && pant == 33 && gender== "0"){
+        setType("삼각형")
+      }else if(top == 100 && pant == 35 && gender== "0"){
+        setType("삼각형")
+      }else if(top == 105 && pant == 36 && gender== "0"){
+        setType("삼각형")
+      }else if(top == 80 && pant == 25 && gender== "1"){
+        setType("삼각형")
+      }else if(top == 85 && pant == 26 && gender== "1"){
+        setType("삼각형")
+      }else if(top == 90 && pant == 27 && gender== "1"){
+        setType("삼각형")
+      }else if(top == 95 && pant == 28 && gender== "1"){
+        setType("삼각형")
+      }else if(top == 100 && pant == 29 && gender== "1"){
+        setType("삼각형")
+      } else if (top == 95 && pant == 29 && gender== "0"){
+        setType("역삼각형")
+      }else if (top == 105 && pant == 31 && gender== "0"){
+        setType("역삼각형")
+      }else if (top == 110 && pant == 33 && gender== "0"){
+        setType("역삼각형")
+      }else if (top == 90 && pant == 24 && gender== "1"){
+        setType("역삼각형")
+      }else if (top == 100 && pant == 26 && gender== "1"){
+        setType("역삼각형")
+      }else if (top == 105 && pant == 27 && gender== "1"){
+        setType("역삼각형")
+      }
+      nav("/avatar")
+  }
  
   return (
       <div className='type-container'>
-        <img src={img} style={{width:'100%', marginBottom:'20px'}}></img>
+        <img src={img} style={{width:'440px',height:'auto', marginBottom:'20px'}}></img>
           {!info ? 
         < FaQuestionCircle onClick={infoHandler} style={{marginLeft:'380px', fontSize : '40px' , color : "#787878"}}/>
           :
@@ -64,7 +143,7 @@ const Type = () => {
         sx={{fontFamily:'Pretendard-Bold'}}
         >
         <div>
-        <FormControlLabel value="female" control={<Radio sx={{color: '#79746C'}}/>} label="녀" />
+        <FormControlLabel value="female" control={<Radio sx={{color: '#79746C'}}/>} label="여" />
         <FormControlLabel value="male" control={<Radio sx={{color: '#79746C', fontFamily:'Pretendard-Bold'}}/>} label="남" />
         </div>
       </RadioGroup>
@@ -87,7 +166,7 @@ const Type = () => {
     </Box>
     <Box sx={{ width: '400px' }}>
     <PiPantsFill fontSize={'40px'} color='rgba(0, 0, 0, 0.6)'/>
-    <span style={{marginLeft : '10px', fontWeight:'bold'}}>24-42</span>
+    <span style={{marginLeft : '10px', fontWeight:'bold'}}>24-29</span>
       <Slider
         aria-labelledby="discrete-slider-restrict"
         defaultValue={pant}
@@ -98,10 +177,10 @@ const Type = () => {
         marks
         sx={{color: '#79746C'}}
         min={24}
-        max={42}
+        max={29}
       />
     </Box>
-    {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}}>아바타 생성</button> : <TypeInfo/>}
+    {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}} onClick={avatarHanlder}>아바타 생성</button> : <TypeInfo/>}
     </div>
     </div>
   )

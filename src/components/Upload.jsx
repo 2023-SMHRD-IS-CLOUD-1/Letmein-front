@@ -55,7 +55,7 @@ const  Upload  = () => {
           console.error(err);
         } else {
           console.log(data);
-          // boot -> db에 저장 
+          //파이썬 요청
           axios.post("http://54.90.29.98:5000/upload", {
             img : "letmeinletmein.jpg"
           }).then((res) => {

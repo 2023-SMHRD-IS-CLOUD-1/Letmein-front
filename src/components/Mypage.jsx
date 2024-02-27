@@ -37,7 +37,7 @@ const Mypage = () => {
   const myPost = () => {
     setMyWrite(true);
     setMyLikeList(false);
-    axios.get(`http://3.36.68.187:8090/letmein/searchWriter?page=${page}&size=6&userId=${user_id}`
+    axios.get(`http://54.180.13.94:8090/letmein/searchWriter?page=${page}&size=6&userId=${user_id}`
        // 현재 페이지 번호를 백엔드로 전달
     )
     .then((res) => {
@@ -55,7 +55,7 @@ const Mypage = () => {
   const myLike = () => {
     setMyWrite(false);
     setMyLikeList(true);
-    axios.get(`http://3.36.68.187:8090/letmein/myLike?user_id=${user_id}`
+    axios.get(`http://54.180.13.94:8090/letmein/myLike?user_id=${user_id}`
     ).then((res)=>{
       setPostList(res.data);
     }).catch((error)=>{

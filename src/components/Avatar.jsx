@@ -32,7 +32,7 @@ useEffect(()=>{
 },[])
 // 아바타 불러오기 
   useEffect(()=> {
-   axios.post("http://3.36.68.187:8090/letmein/avatar",{
+   axios.post("http://54.180.13.94:8090/letmein/avatar",{
     avatar_gender : gender
    }).then((res)=>{
     setAva(res.data)

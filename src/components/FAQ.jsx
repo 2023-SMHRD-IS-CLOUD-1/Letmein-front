@@ -35,7 +35,7 @@ import { create } from '@mui/material/styles/createTransitions';
         const [data, setData] = useState(false)
         useEffect(() => {
           if (value === 'QUESTION') {
-            axios.post("http://3.36.68.187:8090/letmein/customerAll", {
+            axios.post("http://54.180.13.94:8090/letmein/customerAll", {
               user_id: user_id
             })
               .then((res) => {

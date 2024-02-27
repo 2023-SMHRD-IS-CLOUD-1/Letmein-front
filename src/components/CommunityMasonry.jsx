@@ -75,7 +75,7 @@ const searchWriter = () => {
     const ImgFethch = () => {
       if(del){
         setErr(false)
-        axios(`http://3.36.68.187:8090/letmein/selectAll?page=${page}&size=6`)
+        axios(`http://15.165.205.128:8090/letmein/selectAll?page=${page}&size=6`)
         .then((res) => {
           console.log(res.data)
           setList("");

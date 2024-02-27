@@ -48,7 +48,7 @@ const CommunityDetail = () => {
         }
         setNum(item.postNum)
         // 글 작성자의 닉네임 조회
-        axios.post("http://3.36.68.187:8090/letmein/nickFind",{
+        axios.post("http://54.180.13.94:8090/letmein/nickFind",{
             user_id : item.userId
         }).then((res)=>{
             setNick(res.data[0].user_nick);
@@ -58,7 +58,7 @@ const CommunityDetail = () => {
     }, [item]);
     useEffect(()=>{
         // 좋아요수 세기
-        axios.post("http://3.36.68.187:8090/letmein/countLike",{
+        axios.post("http://54.180.13.94:8090/letmein/countLike",{
             post_num : num
         }).then((res)=>{
             setCntLike(res.data);
@@ -66,7 +66,7 @@ const CommunityDetail = () => {
             console.error(error)
         })
         
-        axios.post("http://3.36.68.187:8090/letmein/countUser",{
+        axios.post("http://54.180.13.94:8090/letmein/countUser",{
             // 로그인한 유저가 좋아요 누른 글인지 체크
             user_id : user_id
         }).then((res)=>{
@@ -123,7 +123,7 @@ const CommunityDetail = () => {
     }
     // 글 삭제
     const deleteHandler = () => {
-        axios.post("http://3.36.68.187:8090/letmein/postDelete",{
+        axios.post("http://54.180.13.94:8090/letmein/postDelete",{
             post_num : num,
         }).then((res)=>{
             alert("게시글이 삭제되었습니다")
