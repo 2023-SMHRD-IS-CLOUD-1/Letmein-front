@@ -7,10 +7,13 @@ import hourglass from '../images/hourglass.png'
 import rectangle from '../images/rectangle.png'
 import round from '../images/round.png'
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 const TypeDetail = () => {
-  const {type, setType, gender, setGender} = useContext(UserContext)
+  const {type, setType, gender, setGender, setSuc} = useContext(UserContext)
   const [imgsrc, setImgsrc] = useState("");
+  const nav = useNavigate("");
   useEffect(()=>{
+    
    if(type == "역삼각형"){
       setImgsrc(triangle)
    } else if(type == "삼각형"){
@@ -22,7 +25,11 @@ const TypeDetail = () => {
    }else if(type == ""){
     setImgsrc(round)
    }
-  },type)
+  },[type])
+
+  const avatar =() => {
+    nav("/avatar")
+  }
   return (
     <div >
        <img src={imgsrc}></img>

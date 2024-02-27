@@ -13,11 +13,9 @@ const TypeInfo = () => {
     <div className='result-container'>
         <p style={{fontSize:'30px'}}>분석이 완료되었습니다.</p>
         <div className='result'>
-        <p style={{fontSize:'24px'}}>{user_id}님의 분석결과는</p>
         <p style={{fontSize:'20px'}}>성별 : {gender == 0 ? "남" : "여"}</p>
         <p style={{fontSize:'20px'}}>체형 : {type}</p>
         <p style={{fontSize:'17px', color:'#AE3A1E'}} onClick={()=>nav("/typeDetail")}>체형 정보가 궁금하시다면 "클릭"해보세요</p>
-        <p style={{fontSize:'22px'}}>입니다.</p>
         </div>
         <p style={{fontSize:'20px'}}>분석 결과로 나만의 아바타를 제작해보세요</p>
         <button onClick={()=>nav("/avatar")}>Go</button>

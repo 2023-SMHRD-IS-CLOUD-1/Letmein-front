@@ -47,7 +47,7 @@ const Detail = () => {
         setNum(item.post_num)
         // 글 작성자의 닉네임 조회
         axios.post("/nickFind",{
-            user_id : item.user_id
+            user_id : user_id
         }).then((res)=>{
             setNick(res.data[0].user_nick);
         }).catch((error)=>{
@@ -80,6 +80,7 @@ const Detail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else if(!like){
+            console.log(user_id, num)
             axios.post("http://54.180.13.94:8090/letmein/like",{
                 post_num : num,
                 user_id : user_id

@@ -65,7 +65,7 @@ const Join = () => {
   }
   // 아이디 중복 체크
   const idChek = () => {
-    axios.post("/loginChk",{
+    axios.post("http://54.180.13.94:8090/letmein/loginChk",{
       user_id:user_id
     }).then((res)=>{
       console.log(res)

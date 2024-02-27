@@ -15,7 +15,9 @@ import Codi from './Codi'
 // **아바타 페이지**
 const Avatar = () => {
 const [imgWid , setImgWid] = useState(false)
-const {gender, setGender , type, setType, clickedImageSrc, setClickedImageSrc, codi, setCodi, codiImgSrc, setCodiImgSrc} = useContext(UserContext);
+const {gender, setGender , type, setType, clickedImageSrc, setClickedImageSrc, codi, setCodi,
+  setResultAvatar, resultAvatar,
+  codiImgSrc, setCodiImgSrc, avatarName , setAvatarName} = useContext(UserContext);
 const [ava, setAva] = useState([]);
 const [change, setChange] = useState("");
 const [mainAvatar, setMainAvatar] = useState("")
@@ -26,25 +28,36 @@ const imgHandler = () => {
 const [avaFilter, setAvaFilter] = useState("");
 const [filter, setFilter] = useState(false)
 const [clk, setClk] = useState(false)
-useEffect(()=>{
-  setGender("1")
-  setType("역삼각형")
-},[])
-// 아바타 불러오기 
+
+// 아바타 불러오기 \
+
   useEffect(()=> {
-   axios.post("http://54.180.13.94:8090/letmein/avatar",{
-    avatar_gender : gender
-   }).then((res)=>{
-    setAva(res.data)
-    const main = res.data.filter(item => item.avatar_type == type)
-    setMainAvatar(main[0].avatar_imgsrc)
-    console.log("avatar", mainAvatar)
-   }).catch((err)=>{
-     console.error(err)
-   })
+    if(gender === "여"){
+      setGender("1")
+    } else if(gender === "남") {
+      setGender("0")
+    }
+    avatar()
+    console.log("성별",gender)
   },[gender])
 
- 
+ const avatar = () => {
+  console.log("아바타 성별", gender)
+  axios.post("http://54.180.13.94:8090/letmein/avatar",{
+    avatar_gender : gender
+   }).then((res)=>{
+    console.log("아바타 불러와라",res)
+    setAva(res.data)
+    const main = res.data.filter(item => item.avatar_type == type)
+    console.log("avava", main)
+    setMainAvatar(main[0].avatar_imgsrc)
+    console.log('main',mainAvatar)
+    console.log("avatar", mainAvatar)
+    console.log(codi)
+   }).catch((err)=>{
+     console.error("아바타에러",err)
+   })
+ }
   // 슬라이드 세팅 
   const settings = {
     dots: true, 
@@ -109,7 +122,7 @@ const avatarFilter = (value) => {
       <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={clk ? clickedImageSrc : mainAvatar} onClick={imgHandler}></img>
       :
       // 코디 + 아바타 이미지
-      <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={codiImgSrc}></img>
+      <img style={{width : !imgWid ? '200px' : '400px', marginLeft : !imgWid ? '10px' :'40px' }} src={resultAvatar}></img>
       }
       {!imgWid ?
       <>
@@ -189,7 +202,8 @@ const avatarFilter = (value) => {
               {ava.map((item, index)=>
               <div key={index} >
                 <img style={{width:'150px' , height:'150px' }} src={item.avatar_imgsrc} alt={`Slide ${index+1}`}  
-                onClick={() => {setClickedImageSrc(item.avatar_imgsrc); setClk(true); setType(item.avatar_type)}}></img>
+                onClick={() => {setClickedImageSrc(item.avatar_imgsrc); setClk(true); setType(item.avatar_type); setAvatarName(item.avatar_num)
+                }}></img>
               </div>
               )}
         </Slider>
@@ -203,7 +217,10 @@ const avatarFilter = (value) => {
                   style={{ width: '150px', height: '150px' }}
                   src={item.avatar_imgsrc}
                   alt={`Slide ${index + 1}`}
-                  onClick={() => {setClickedImageSrc(item.avatar_imgsrc); setClk(true)}}
+                  onClick={() => {setClickedImageSrc(item.avatar_imgsrc); 
+                    setClk(true); 
+                    setAvatarName(item.avatar_num,".jpg")
+                  }}
                 />
               </div>
             ))}
@@ -214,7 +231,8 @@ const avatarFilter = (value) => {
               style={{ width: '150px', height: '150px' }}
               src={avaFilter[0].avatar_imgsrc}
               alt={`Slide 1`}
-              onClick={() => {setClickedImageSrc(avaFilter[0].avatar_imgsrc); setClk(true)}}
+              onClick={() => {setClickedImageSrc(avaFilter[0].avatar_imgsrc); setClk(true);
+              }}
             />
           </div>
             )}

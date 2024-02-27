@@ -40,7 +40,7 @@ useEffect(() => {
 
 // 작성자 기준 검색
 const searchWriter = () => {
-  axios.get(`http://3.36.68.187:8090/letmein/searchWriter?userId=${searchKey}`)
+  axios.get(`http://54.180.13.94:8090/letmein/searchWriter?userId=${searchKey}`)
   .then((res)=>{
     if(res.data.length == 0){
       setErr(true)
@@ -56,7 +56,7 @@ const searchWriter = () => {
   }
   // 제목 기준 검색
   const searchTitle = () =>{
-    axios.get(`http://3.36.68.187:8090/letmein/searchTitle?postTitle=${searchKey}`)
+    axios.get(`http://54.180.13.94:8090/letmein/searchTitle?postTitle=${searchKey}`)
     .then((res)=>{
       if(res.data.length == 0){
         setErr(true);
@@ -75,7 +75,7 @@ const searchWriter = () => {
     const ImgFethch = () => {
       if(del){
         setErr(false)
-        axios(`http://15.165.205.128:8090/letmein/selectAll?page=${page}&size=6`)
+        axios(`http://54.180.13.94:8090/letmein/selectAll?page=${page}&size=6`)
         .then((res) => {
           console.log(res.data)
           setList("");

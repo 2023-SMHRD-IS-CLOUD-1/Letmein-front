@@ -48,8 +48,9 @@ const CommunityDetail = () => {
         }
         setNum(item.postNum)
         // 글 작성자의 닉네임 조회
+        console.log("userid",user_id)
         axios.post("http://54.180.13.94:8090/letmein/nickFind",{
-            user_id : item.userId
+            user_id : user_id
         }).then((res)=>{
             setNick(res.data[0].user_nick);
         }).catch((error)=>{
@@ -84,7 +85,7 @@ const CommunityDetail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else if(!like){
-            axios.post("/like",{
+            axios.post("http://54.180.13.94:8090/letmein/like",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{
@@ -100,7 +101,7 @@ const CommunityDetail = () => {
             alert("로그인이 필요합니다.");
             nav("/login");
         }else{
-            axios.post("/unlike",{
+            axios.post("http://54.180.13.94:8090/letmein/unlike",{
                 post_num : num,
                 user_id : user_id
             }).then((res)=>{

@@ -67,7 +67,7 @@ const Post = () => {
       } else {
         console.log(data);
         // boot -> db에 저장 
-        axios.post("/post", {
+        axios.post("http://54.180.13.94:8090/letmein/post", {
           post_title: title,
           post_content: content,
           post_acc: acc,

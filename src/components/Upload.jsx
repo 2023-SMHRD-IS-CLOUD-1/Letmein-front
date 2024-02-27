@@ -46,7 +46,7 @@ const  Upload  = () => {
   
       const uploadParams = {
         Bucket: 'letmein0229',
-        Key: "letmeinletmein.jpg",
+        Key: "img.jpg",
         Body: img
       };
   
@@ -54,14 +54,12 @@ const  Upload  = () => {
         if (err) {
           console.error(err);
         } else {
-          console.log(data);
           //파이썬 요청
-          axios.post("http://54.90.29.98:5000/upload", {
-            img : "letmeinletmein.jpg"
-          }).then((res) => {
-            console.log(res);
-          setType(res.type)
-          setGender(res.gender)
+          axios.post("http://15.165.72.217:5000/upload")
+          .then((res) => {
+            console.log(res.data)
+            setGender(res.data.gender)
+            setType(res.data.body)
           setSuc(true)
       }).catch((err)=>{
         console.error('분석에러',err)
@@ -95,11 +93,9 @@ const  Upload  = () => {
         <img src={up}></img>
         <p style={{fontSize:'30px'}}>분석이 완료되었습니다.</p>
         <div className='result'>
-        <p style={{fontSize:'24px'}}>{user_id}님의 분석결과는</p>
         <p style={{fontSize:'20px'}}>성별 : {gender == 0 ? "남" : "여"}</p>
         <p style={{fontSize:'20px'}}>체형 : {type}</p>
         <p style={{fontSize:'17px', color:'#AE3A1E'}} onClick={()=>nav("/typeDetail")}>체형 정보가 궁금하시다면 "클릭"해보세요</p>
-        <p style={{fontSize:'22px'}}>입니다.</p>
         </div>
         <p style={{fontSize:'20px'}}>분석 결과로 나만의 아바타를 제작해보세요</p>
         <button onClick={()=>nav("/avatar")}>Go</button>

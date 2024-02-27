@@ -29,7 +29,7 @@ const Type = () => {
   const [info, setInfo] = useState(false);
 
   // 성별 
-  const {gender, setGender, type, setType} = useContext(UserContext)
+  const {gender, setGender, type, setType, setResultAvatar, resultAvatar,codi, setCodi,} = useContext(UserContext)
   // 상의 사이즈
   const [top,setTop] = useState(80);
   // 하의 사이즈
@@ -120,6 +120,7 @@ const Type = () => {
         setType("역삼각형")
       }
       nav("/avatar")
+      setCodi(false)
   }
  
   return (
@@ -143,8 +144,8 @@ const Type = () => {
         sx={{fontFamily:'Pretendard-Bold'}}
         >
         <div>
-        <FormControlLabel value="female" control={<Radio sx={{color: '#79746C'}}/>} label="여" />
-        <FormControlLabel value="male" control={<Radio sx={{color: '#79746C', fontFamily:'Pretendard-Bold'}}/>} label="남" />
+        <FormControlLabel value="1" control={<Radio sx={{color: '#79746C'}}/>} label="여" />
+        <FormControlLabel value="0" control={<Radio sx={{color: '#79746C', fontFamily:'Pretendard-Bold'}}/>} label="남" />
         </div>
       </RadioGroup>
     </FormControl>

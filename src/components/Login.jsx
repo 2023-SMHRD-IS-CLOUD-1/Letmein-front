@@ -12,14 +12,20 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const LoginHandler = () =>{
-    axios.post("http://54.180.13.94:8090/login",{
+    axios.post("http://54.180.13.94:8090/letmein/login",{
       user_id : user_id,
       user_pw : user_pw
     })
     .then((res) => {
       console.log(res.data);
-         
-      
+      alert("로그인에 성공했습니다!")   
+      nav("/")
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('user_id', res.data.user_id);
+      sessionStorage.setItem('user', res.data.user_id)
+      setLogin(true);
+      setId(res.data.user_id)
+      console.log(user_id)
     })
     .catch((error) => {
       console.error('회원가입 실패', error);
