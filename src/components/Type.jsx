@@ -178,7 +178,7 @@ const Type = () => {
         marks
         sx={{color: '#79746C'}}
         min={24}
-        max={29}
+        max={36}
       />
     </Box>
     {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}} onClick={avatarHanlder}>아바타 생성</button> : <TypeInfo/>}
