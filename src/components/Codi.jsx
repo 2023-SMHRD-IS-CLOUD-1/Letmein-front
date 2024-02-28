@@ -185,3 +185,5 @@ const Codi = () => {
     </div>
   )
 }
+
+export default Codi
