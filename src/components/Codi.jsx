@@ -171,6 +171,9 @@ const Codi = () => {
               setCodiImgSrc(item.codi_imgsrc);
               nameHandler()
               setCodi(true)
+              if(codi==true){
+                setCodi(false)
+              }
             }}
       />
     </div>
@@ -182,5 +185,3 @@ const Codi = () => {
     </div>
   )
 }
-
-export default Codi

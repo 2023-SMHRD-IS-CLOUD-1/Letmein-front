@@ -42,86 +42,156 @@ const Type = () => {
   }
   
   const avatarHanlder = () =>{ 
-      if(top == 85 && pant == 29 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 90 && pant == 30 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 95 && pant == 31 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 100 && pant == 33 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 105 && pant == 35 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 110 && pant == 36 && gender== "0"){
-        setType("직사각형")
-      } else if(top == 80 && pant == 24 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 85 && pant == 25 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 90 && pant == 26 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 95 && pant == 27 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 100 && pant == 28 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 105 && pant == 29 && gender== "1"){
-        setType("직사각형")
-      } else if(top == 90 && pant == 29 && gender== "0"){
-        setType("사다리꼴")
-      } else if(top == 95 && pant == 30 && gender== "0"){
-        setType("사다리꼴")
-      } else if(top == 100 && pant == 31 && gender== "0"){
-        setType("사다리꼴")
-      } else if(top == 105 && pant == 33 && gender== "0"){
-        setType("사다리꼴")
-      } else if(top == 110 && pant == 35 && gender== "0"){
-        setType("사다리꼴")
-      } else if(top == 85 && pant == 24 && gender== "1"){
-        setType("사다리꼴")
-      } else if(top == 90 && pant == 25 && gender== "1"){
-        setType("사다리꼴")
-      } else if(top == 95 && pant == 26 && gender== "1"){
-        setType("사다리꼴")
-      } else if(top == 100 && pant == 27 && gender== "1"){
-        setType("사다리꼴")
-      }else if(top == 105 && pant == 28 && gender== "1"){
-        setType("사다리꼴")
-      }else if(top == 85 && pant == 30 && gender== "0"){
-        setType("삼각형")
-      }else if(top == 90 && pant == 31 && gender== "0"){
-        setType("삼각형")
-      }else if(top == 95 && pant == 33 && gender== "0"){
-        setType("삼각형")
-      }else if(top == 100 && pant == 35 && gender== "0"){
-        setType("삼각형")
-      }else if(top == 105 && pant == 36 && gender== "0"){
-        setType("삼각형")
-      }else if(top == 80 && pant == 25 && gender== "1"){
-        setType("삼각형")
-      }else if(top == 85 && pant == 26 && gender== "1"){
-        setType("삼각형")
-      }else if(top == 90 && pant == 27 && gender== "1"){
-        setType("삼각형")
-      }else if(top == 95 && pant == 28 && gender== "1"){
-        setType("삼각형")
-      }else if(top == 100 && pant == 29 && gender== "1"){
-        setType("삼각형")
-      } else if (top == 95 && pant == 29 && gender== "0"){
-        setType("역삼각형")
-      }else if (top == 105 && pant == 31 && gender== "0"){
-        setType("역삼각형")
-      }else if (top == 110 && pant == 33 && gender== "0"){
-        setType("역삼각형")
-      }else if (top == 90 && pant == 24 && gender== "1"){
-        setType("역삼각형")
-      }else if (top == 100 && pant == 26 && gender== "1"){
-        setType("역삼각형")
-      }else if (top == 105 && pant == 27 && gender== "1"){
-        setType("역삼각형")
+    if(gender == '0'){
+      if(top == 80){
+          if(pant <= 26){
+              setType("역삼각형")
+          }else if(pant == 27){
+              setType("사다리꼴")
+          }else if(pant == 28){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 85){
+          if(pant <= 27){
+              setType("역삼각형")
+          }else if(pant == 28){
+              setType("사다리꼴")
+          }else if(pant == 29){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 90){
+          if(pant <= 28){
+              setType("역삼각형")
+          }else if(pant == 29){
+              setType("사다리꼴")
+          }else if(pant == 30){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 95){
+          if(pant <= 29){
+              setType("역삼각형")
+          }else if(pant == 30){
+              setType("사다리꼴")
+          }else if(pant == 31){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 100){
+          if(pant <= 31){
+              setType("역삼각형")
+          }else if(pant == 32){
+              setType("사다리꼴")
+          }else if(pant == 33){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 105){
+          if(pant <= 33){
+              setType("역삼각형")
+          }else if(pant == 34){
+              setType("사다리꼴")
+          }else if(pant == 35){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 110){
+          if(pant <= 34){
+              setType("역삼각형")
+          }else if(pant == 35){
+              setType("사다리꼴")
+          }else if(pant == 36){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
       }
-      nav("/avatar")
-      setCodi(false)
   }
+  
+  if(gender == '1'){
+      if(top == 80){
+          if(pant <= 22){
+              setType("역삼각형")
+          }else if(pant == 23){
+              setType("사다리꼴")
+          }else if(pant == 24){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 85){
+          if(pant <= 23){
+              setType("역삼각형")
+          }else if(pant == 24){
+              setType("사다리꼴")
+          }else if(pant == 25){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 90){
+          if(pant <= 24){
+              setType("역삼각형")
+          }else if(pant == 25){
+              setType("사다리꼴")
+          }else if(pant == 26){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 95){
+          if(pant <= 25){
+              setType("역삼각형")
+          }else if(pant == 26){
+              setType("사다리꼴")
+          }else if(pant == 27){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 100){
+          if(pant <= 26){
+              setType("역삼각형")
+          }else if(pant == 27){
+              setType("사다리꼴")
+          }else if(pant == 28){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 105){
+          if(pant <= 27){
+              setType("역삼각형")
+          }else if(pant == 28){
+              setType("사다리꼴")
+          }else if(pant == 29){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }else if(top == 110){
+          if(pant <= 28){
+              setType("역삼각형")
+          }else if(pant == 29){
+              setType("사다리꼴")
+          }else if(pant == 30){
+              setType("직사각형")
+          }else{
+              setType("삼각형")
+          }
+      }
+  }
+    nav("/avatar")
+    setCodi(false)
+}
  
   return (
       <div className='type-container'>
@@ -167,7 +237,7 @@ const Type = () => {
     </Box>
     <Box sx={{ width: '400px' }}>
     <PiPantsFill fontSize={'40px'} color='rgba(0, 0, 0, 0.6)'/>
-    <span style={{marginLeft : '10px', fontWeight:'bold'}}>24-29</span>
+    <span style={{marginLeft : '10px', fontWeight:'bold'}}>24-36</span>
       <Slider
         aria-labelledby="discrete-slider-restrict"
         defaultValue={pant}
@@ -178,7 +248,7 @@ const Type = () => {
         marks
         sx={{color: '#79746C'}}
         min={24}
-        max={29}
+        max={36}
       />
     </Box>
     {!suc ? <button style={{fontFamily:'Pretendard-Medium', fontSize:'17px'}} onClick={avatarHanlder}>아바타 생성</button> : <TypeInfo/>}
