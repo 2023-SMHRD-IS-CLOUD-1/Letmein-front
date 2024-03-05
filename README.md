@@ -1,3 +1,11 @@
+# Letmein-Front
+### `npm install`
+package.json에 저장되어 있는 의존성 패키지를 설치
+
+
+
+
+
 # React 사용방법
 ## Getting Started with Create React App
 
