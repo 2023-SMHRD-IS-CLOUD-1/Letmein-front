@@ -1,8 +1,12 @@
 # Letmein-Front
 ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/NailArt/assets/105231826/a4644fdd-829f-4868-8075-73b528d59b3f)
+Letmein 프로젝트에서 React.js로 개발한 프론트엔드
 
 ### `npm install`
-package.json에 저장되어 있는 의존성 패키지를 설치
+- package.json에 저장되어 있는 의존성 패키지를 설치
+- 프로젝트를 다운로드 받은 다음 VSCode에서 npm install을 실행하여 패키지 설치
+
+### 
 
 # 링크
 |                     이름 | 설명                                                              | 링크                                                                |
@@ -86,5 +90,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 =======
-# Letmein-front
->>>>>>> c8cd30d238c79cec007bc374eeb4ad15602e8f91
+
